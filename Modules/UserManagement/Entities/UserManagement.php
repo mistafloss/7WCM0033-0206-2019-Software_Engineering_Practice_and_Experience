@@ -1,0 +1,12 @@
+<?php
+
+namespace Modules\ModuleName\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+
+class ModelName extends Model
+{
+    protected $table = 'user_management';
+
+}
