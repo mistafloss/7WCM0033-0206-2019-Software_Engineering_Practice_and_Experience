@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\ModuleName\Models;
+namespace Modules\Authentication\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
 
-class ModelName extends Model
+class Authentication extends Model
 {
     protected $table = 'authentication';
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\ModuleName\Providers;
+namespace Modules\Authentication\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
@@ -17,7 +17,7 @@ class AuthenticationServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /* TODO: SET NAMESPACE HERE */
-    protected $namespace = 'Modules\ModuleName\Http\Controllers';
+    protected $namespace = 'Modules\Authentication\Http\Controllers';
 
     /**
      * Boot the application events.
@@ -27,7 +27,7 @@ class AuthenticationServiceProvider extends ServiceProvider
     public function boot()
     {
         /* TODO: ADD ROUTE FILES HERE */
-        $this->loadRoutesFrom(base_path('Modules/ModuleName/Http/routes.php'));
+        $this->loadRoutesFrom(base_path('Modules/Authentication/Http/routes.php'));
     }
 
     /**

@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\ModuleName\Models;
+namespace Modules\Property\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
 
-class ModelName extends Model
+class Property extends Model
 {
     protected $table = 'property';
 

@@ -179,6 +179,9 @@ return [
 
         Modules\Command\Providers\CommandServiceProvider::class,
         Modules\Property\Providers\PropertyServiceProvider::class,
+        Modules\Authentication\Providers\AuthenticationServiceProvider::class,
+        Modules\UserManagement\Providers\UserManagementServiceProvider::class,
+        Modules\BackOffice\Providers\BackOfficeServiceProvider::class
     ],
 
     /*

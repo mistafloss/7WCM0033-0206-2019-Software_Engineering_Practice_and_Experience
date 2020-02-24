@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\UserManagement\Providers;
+namespace Modules\BackOffice\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 
 
-class UserManagementServiceProvider extends ServiceProvider
+class BackOfficeServiceProvider extends ServiceProvider
 {
 
     /**
@@ -17,7 +17,7 @@ class UserManagementServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /* TODO: SET NAMESPACE HERE */
-    protected $namespace = 'Modules\UserManagement\Http\Controllers';
+    protected $namespace = 'Modules\BackOffice\Http\Controllers';
 
     /**
      * Boot the application events.
@@ -27,7 +27,7 @@ class UserManagementServiceProvider extends ServiceProvider
     public function boot()
     {
         /* TODO: ADD ROUTE FILES HERE */
-        $this->loadRoutesFrom(base_path('Modules/UserManagement/Http/routes.php'));
+        $this->loadRoutesFrom(base_path('Modules/BackOffice/Http/routes.php'));
     }
 
     /**

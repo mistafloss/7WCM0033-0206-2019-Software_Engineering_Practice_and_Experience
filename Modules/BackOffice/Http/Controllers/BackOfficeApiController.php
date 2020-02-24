@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Property\Http\Controllers;
+namespace Modules\BackOfficeController\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
 
 
 
-class PropertyApiController extends BaseController
+class BackOfficeApiController extends BaseController
 {
 
     /**

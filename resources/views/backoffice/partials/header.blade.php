@@ -1,0 +1,63 @@
+<header>
+    <div class="topHeader" style="height:70px; width:100%">
+        <div class="container-fluid">
+            <div class="topHeaderLogo">
+                <a href=""> Estate Agency Portal - Backoffice </a>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Property Management
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Properties</a>
+                  <a class="dropdown-item" href="#">Reports</a>
+                  <a class="dropdown-item" href="#">Property Categories</a>
+                  <a class="dropdown-item" href="#">Manage Property Viewing Appointments</a>
+                </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Event Management</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Partners
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Buyers</a>
+                  <a class="dropdown-item" href="#">Sellers</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Content Management</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('usermanagementIndex')}}">User Management</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Roles & Permissions</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Account
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Edit Profile</a>
+                  <a class="dropdown-item" href="{{route('backOfficelogout')}}">Logout</a>
+                </div>
+            </li>
+          </ul>
+        </div>
+        
+      </nav>
+</header>

@@ -1,13 +1,20 @@
 <?php
 
-namespace Modules\ModuleName\Http\Controllers;
+namespace Modules\UserManagement\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
 
-
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Modules\UserManagement\Services\UserService;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Validator;
+use Illuminate\Http\Request;
+use Auth;
 
 class UserManagementApiController extends BaseController
 {
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     /**
      * List Foo objects
@@ -20,7 +27,18 @@ class UserManagementApiController extends BaseController
         return response()->json(['success' => true, 'data' => FooService::list($per_page)]);
     }
 
-
+    protected function createValidation($request)
+    {
+        $rules = array(
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'username' => 'required|unique:users',
+            'email' => 'required|unique:users',
+            'password' => 'required',
+            'role_id' => 'required' 
+        );
+        $this->validate( $request , $rules);
+    }
     /**
      * Create new Foo object
      * @param Request $request
@@ -28,13 +46,11 @@ class UserManagementApiController extends BaseController
      */
     public function create(Request $request)
     {
-        /** DO VALIDATE */
-
-        $data = $request->except('_token');
-
-        $newObject = Foo::create($data);
-        return response()->json(['success' => true, 'data' => $newObject]);
-    }
+        $this->createValidation($request);
+        $data = $request->all();
+        $user = UserService::createUser($data);
+        return response()->json(['status' => 'success', 'data' => $user]);
+    }   
 
 
     /**
