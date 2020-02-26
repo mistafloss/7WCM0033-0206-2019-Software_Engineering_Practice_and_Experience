@@ -28,11 +28,17 @@ Route::group(['prefix' => 'api', 'middleware' => ['web'], 'namespace' => 'Module
 });
 
 
-Route::group(['prefix' => 'backoffice/usermanagement', 'middleware' => ['web'], 'namespace' => 'Modules\UserManagement\Http\Controllers'], function () {
+Route::group(['prefix' => 'backoffice/usermanagement', 'middleware' => ['web','roles'],'roles' => ['Developer','Primary Admin','Manager','Staff'], 'namespace' => 'Modules\UserManagement\Http\Controllers'], function () {
 
     // Note the empty prefix on the route names! use this route group to serve view files
-    Route::get('index',           ['uses' => 'UserManagementController@index',   'as' => 'usermanagementIndex']);
-    Route::get('createuser',          ['uses' => 'UserManagementController@addUser', 'as' => 'addUser']);
+    // Route::group(['middleware' => 'roles:Manager, permission:can_cancel_property_sale'], function(){
+      
+    // });
+    Route::get('index', ['uses' => 'UserManagementController@index',   'as' => 'usermanagementIndex']);
+    Route::get('roles', ['uses' => 'UserManagementController@rolesIndex',   'as' => 'rolesIndex']);
+    Route::get('permissions', ['uses' => 'UserManagementController@permissionsIndex',   'as' => 'permissionsIndex']);
+    
+    Route::get('createuser',  ['uses' => 'UserManagementController@addUser', 'as' => 'addUser']);
     // Route::get('view/{id}',      ['uses' => 'FooController@view',   'as' => '_fooView']);
     // Route::put('update/{id}',      ['uses' => 'FooController@update', 'as' => '_fooUpdate']);
     // Route::delete('delete',   ['uses' => 'FooController@delete', 'as' => '_fooDelete']);

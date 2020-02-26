@@ -20,6 +20,9 @@
                   Property Management
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  {{-- @can('can_view_list_of_users')
+                  <a class="dropdown-item" href="#">Properties</a>
+                  @endcan --}}
                   <a class="dropdown-item" href="#">Properties</a>
                   <a class="dropdown-item" href="#">Reports</a>
                   <a class="dropdown-item" href="#">Property Categories</a>
@@ -44,9 +47,15 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{route('usermanagementIndex')}}">User Management</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Roles & Permissions</a>
-            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Roles & Permissions
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{{route('rolesIndex')}}">Roles</a>
+              <a class="dropdown-item" href="{{route('permissionsIndex')}}">Permissions</a>
+              </div>
+           </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Account

@@ -8,7 +8,7 @@ class Permission extends Model
 {
     protected $table = 'permissions';
 
-    public function users()
+    public function roles()
     {
         return $this->belongsToMany(\Modules\UserManagement\Entities\Role::class, 'roles_permissions');
     }

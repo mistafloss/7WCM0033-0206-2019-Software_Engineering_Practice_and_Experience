@@ -16,8 +16,11 @@ class BackOfficeController extends BaseController
         return view('backoffice.pages.login');
     }
 
-    public function dashboard()
+    public function dashboard(Request $request)
     {
+        $user = $request->user();
+        //dd($user);
+        //dd($user->can('can_cancel_property_sale'));
         return view('backoffice.pages.dashboard');
     }
 }

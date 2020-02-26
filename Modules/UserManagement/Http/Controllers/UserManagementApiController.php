@@ -35,9 +35,11 @@ class UserManagementApiController extends BaseController
             'username' => 'required|unique:users',
             'email' => 'required|unique:users',
             'password' => 'required',
-            'role_id' => 'required' 
+            'role_id' => 'required'
         );
-        $this->validate( $request , $rules);
+
+        $messages = array('role_id.required' => 'Select a role for the user');
+        $this->validate( $request , $rules, $messages);
     }
     /**
      * Create new Foo object

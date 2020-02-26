@@ -10,7 +10,7 @@
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>Estate agency portal | 403 Error </title>
+    <title>Estate agency Portal | 404 Error </title>
 
 
     <!-- ===============================================-->
@@ -41,9 +41,9 @@
           <div class="col-sm-11 col-md-9 col-lg-7 col-xl-6 col-xxl-5"><a class="d-block text-center mb-4" href=""><span class="text-sans-serif font-weight-extra-bold fs-5 d-inline-block">Estate agency portal - Backoffice</span></a>
             <div class="card">
               <div class="card-body p-5">
-                <div class="display-1 text-200 fs-error">403</div>
-                <p class="lead mt-4 text-800 text-sans-serif font-weight-semi-bold">You are not authorized to access this page!</p>
-                <a href="{{route('backofficeIndex')}}">Go back to Login page</a>
+                <div class="display-1 text-200 fs-error">404</div>
+                <p class="lead mt-4 text-800 text-sans-serif font-weight-semi-bold">Access denied for the resource you are trying to access!</p>
+                <a href="{{route('backofficeDashboard')}}">Go back to Dashboard</a>
                 <hr />
                 
               </div>
@@ -63,13 +63,6 @@
     <!--    JavaScripts-->
     <!-- ===============================================-->
     <script src="{{asset('js/jquery.min.js')}}"></script>
-    <script src="{{asset('js/popper.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap.js')}}"></script>
-    <script src="{{asset('js/plugins.js')}}"></script>
-    <script src="{{asset('lib/stickyfilljs/stickyfill.min.js')}}"></script>
-    <script src="{{asset('lib/sticky-kit/sticky-kit.min.js')}}"></script>
-    <script src="{{asset('js/theme.js')}}"></script>
-
   </body>
 
 </html>

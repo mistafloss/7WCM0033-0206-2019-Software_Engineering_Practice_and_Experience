@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class RoleMiddleware
+class Permissions
 {
     /**
      * Handle an incoming request.
@@ -13,12 +13,10 @@ class RoleMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $permission)
     {
-        $actions = $request->route()->getAction();
-        $roles = isset($actions['roles']) ? $actions['roles'] : null;
-    
-        if(!$request->user()->hasAnyRole($roles)){
+        if(!$request->user()->hasPermissionTo($permission))
+        {
             return abort(404, "Access denied for this resource!");
         }
         return $next($request);
