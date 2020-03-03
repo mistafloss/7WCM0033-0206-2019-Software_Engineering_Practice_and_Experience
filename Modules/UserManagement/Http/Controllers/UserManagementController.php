@@ -17,8 +17,8 @@ class UserManagementController extends BaseController
 
     public function index(Request $request)
     {
-        
-        return view('backoffice.pages.usermanagement.index');
+        $users = UserService::getAllUsers();
+        return view('backoffice.pages.usermanagement.index', compact('users'));
     }
 
     public function addUser()

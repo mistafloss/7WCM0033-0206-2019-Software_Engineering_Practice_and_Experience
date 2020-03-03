@@ -36,4 +36,9 @@ class UserService
     {
         return Permission::all();
     }
+
+    public static function getAllUsers()
+    {
+        return User::all();
+    }
 }
