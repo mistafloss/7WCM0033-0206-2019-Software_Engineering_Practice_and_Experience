@@ -7,18 +7,14 @@
 
 
 Route::group(['prefix' => 'api', 'middleware' => ['web'], 'namespace' => 'Modules\UserManagement\Http\Controllers'], function () {
-
-    /* REFERENCE */
-    // https://restfulapi.net/resource-naming/
-    // https://github.com/axios/axios
-    // Note the API prefix on the route names!
+    
     Route::get('foo/index',           ['uses' => 'FooController@list',   'as' => 'API_fooList']);
     Route::post('user/create',          ['uses' => 'UserManagementApiController@create', 'as' => 'API_userCreate']);
+    Route::post('role/update',          ['uses' => 'RoleApiController@update', 'as' => 'API_roleUpdate']);
+
     Route::get('foo/view/{id}',      ['uses' => 'FooController@view',   'as' => 'API_fooView']);
     Route::put('foo/update/{id}',      ['uses' => 'FooController@update', 'as' => 'API_fooUpdate']);
     Route::delete('foo/delete',   ['uses' => 'FooController@delete', 'as' => 'API_fooDelete']);
-
-    /* Duplicate it if you want to manage another object, 1 object, 1 controller, 1 route file */
 
     /*
         For filtering, use Query parameters
@@ -30,12 +26,12 @@ Route::group(['prefix' => 'api', 'middleware' => ['web'], 'namespace' => 'Module
 
 Route::group(['prefix' => 'backoffice/usermanagement', 'middleware' => ['web','roles'],'roles' => ['Developer','Primary Admin','Manager','Staff'], 'namespace' => 'Modules\UserManagement\Http\Controllers'], function () {
 
-    // Note the empty prefix on the route names! use this route group to serve view files
     // Route::group(['middleware' => 'roles:Manager, permission:can_cancel_property_sale'], function(){
       
     // });
     Route::get('index', ['uses' => 'UserManagementController@index',   'as' => 'usermanagementIndex']);
     Route::get('roles', ['uses' => 'UserManagementController@rolesIndex',   'as' => 'rolesIndex']);
+    Route::get('role/view/{id}', ['uses' => 'RoleController@view', 'as' => 'viewRole']);
     Route::get('permissions', ['uses' => 'UserManagementController@permissionsIndex',   'as' => 'permissionsIndex']);
     
     Route::get('createuser',  ['uses' => 'UserManagementController@addUser', 'as' => 'addUser']);

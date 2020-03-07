@@ -42,7 +42,7 @@ class UserManagementApiController extends BaseController
         $this->validate( $request , $rules, $messages);
     }
     /**
-     * Create new Foo object
+     * Create new User 
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
