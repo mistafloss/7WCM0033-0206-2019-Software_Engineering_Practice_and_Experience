@@ -4,7 +4,7 @@
 <div class="container ">
 <div class="card mt-10">
     <div class="card-header">
-       ADD USER
+       UPDATE USER
       <span class="float-right">
         <button id="btn_save" class="btn btn-success"> Save</button>
         <a href="{{route('usermanagementIndex')}}" class="btn btn-danger"> Cancel </a>

@@ -17,8 +17,4 @@ class RoleController extends BaseController
         return view('backoffice.pages.rolesandpermissions.edit_role', compact('role','role_permissions','permissions'));
     }
 
-    public function update(Request $request)
-    {
-        
-    }
 }

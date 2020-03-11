@@ -6,6 +6,7 @@
     <div class="card-header">
        ADD USER
       <span class="float-right">
+        <a href="{{route('usermanagementIndex')}}" class="btn btn-secondary"><i class="far fa-arrow-alt-circle-left"></i>Back to Users</a>
         <button id="btn_save" class="btn btn-success"> Save</button>
       <a href="{{route('usermanagementIndex')}}" class="btn btn-danger"> Cancel </a>
       </span>

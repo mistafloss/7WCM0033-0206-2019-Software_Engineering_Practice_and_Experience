@@ -18,11 +18,11 @@ class RoleApiController extends BaseController
     {
         //$this->createValidation($request);
         $data = $request->all();
-       // dd($request->permission);
         $role = RoleService::getRoleById($request->role_id);
-        return $role->permissions()->sync($request->permission);
-
-        //$user = UserService::createUser($data);
-        //return response()->json(['status' => 'success', 'data' => $user]);
+        if($role->permissions()->sync($request->permission)){
+            return redirect()->route('viewRole',$role->id)->withSuccess('Role Updated');
+        }else{
+            return redirect()->route('viewRole',$role->id)->withFail('Role Update failed!');
+        }
     } 
 }
