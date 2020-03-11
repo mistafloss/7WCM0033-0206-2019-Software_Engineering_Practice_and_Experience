@@ -26,16 +26,10 @@ class UserManagementController extends BaseController
         return view('backoffice.pages.usermanagement.adduser');
     }
 
-    public function rolesIndex(Request $request)
+    public function view($id)
     {
-        $this->user = $request->user();
-        if(!$this->user->can('can_manage_roles_and_permissions'))
-        {
-            return redirect()->route('backofficeDashboard')->withFail('Access denied!');
-        }else{
-            $roles = UserService::getAllRoles();
-            return view('backoffice.pages.rolesandpermissions.roles_index', compact('roles'));
-        }
+        $user = UserService::getUserById($id);
+        return view('backoffice.pages.usermanagement.edit_user', compact('user'));
     }
 
     public function permissionsIndex(Request $request)

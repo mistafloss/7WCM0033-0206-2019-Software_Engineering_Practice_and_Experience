@@ -17,4 +17,15 @@ class RoleController extends BaseController
         return view('backoffice.pages.rolesandpermissions.edit_role', compact('role','role_permissions','permissions'));
     }
 
+    public function rolesIndex(Request $request)
+    {
+        $this->user = $request->user();
+        if(!$this->user->can('can_manage_roles_and_permissions'))
+        {
+            return redirect()->route('backofficeDashboard')->withFail('Access denied!');
+        }else{
+            $roles = RoleService::getAllRoles();
+            return view('backoffice.pages.rolesandpermissions.roles_index', compact('roles'));
+        }
+    }
 }

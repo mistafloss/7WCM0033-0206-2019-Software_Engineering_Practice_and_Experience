@@ -24,7 +24,6 @@
         <form action="{{route('API_roleUpdate')}}" method="post">
             <div class="card-header">
                 {{$role->name}} 
-           
                 <span class="float-right">
                     <a href="{{route('rolesIndex')}}" class="btn btn-secondary"><i class="far fa-arrow-alt-circle-left"></i>Back to Roles</a>
                     <input type="submit" class="btn btn-success" value="Save Roles"/> 
