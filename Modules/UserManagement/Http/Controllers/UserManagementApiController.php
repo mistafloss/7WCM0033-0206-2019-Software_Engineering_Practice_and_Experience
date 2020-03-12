@@ -17,23 +17,6 @@ class UserManagementApiController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     /**
-     * List Foo objects
-     *  Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function list(Request $request)
-    {
-        $per_page = $request->has('per_page') ? $request->get('per_page'): 10;
-        return response()->json(['success' => true, 'data' => FooService::list($per_page)]);
-    }
-
-    protected function userValidation($request, $rules)
-    {
-        $messages = array('role_id.required' => 'Select a role for the user');
-        $this->validate( $request , $rules, $messages);
-    }
-
-    /**
      * Create new User 
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
@@ -49,7 +32,8 @@ class UserManagementApiController extends BaseController
             'role_id' => 'required'
         );
 
-        $this->userValidation($request, $rules);
+        $messages = array('role_id.required' => 'Select a role for the user');
+        $this->validate( $request , $rules, $messages);
         $data = $request->all();
         $user = UserService::createUser($data);
         return response()->json(['status' => 'success', 'data' => $user]);
@@ -57,14 +41,13 @@ class UserManagementApiController extends BaseController
 
 
     /**
-     * Update a User object
+     * Update a User 
      * @param Request $request
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request)
     {
-        //dd($request->all());
         $rules = array(
             'first_name' => 'required',
             'last_name' => 'required',
@@ -72,8 +55,7 @@ class UserManagementApiController extends BaseController
             'email' => 'required',
             'role_id' => 'required'
         );
-
-        $this->userValidation($request, $rules);
+        $this->validate( $request , $rules);
         $data = $request->except('_token');
         UserService::updateUser($data);
         return redirect()->route('usermanagementIndex')->withSuccess('User Updated');

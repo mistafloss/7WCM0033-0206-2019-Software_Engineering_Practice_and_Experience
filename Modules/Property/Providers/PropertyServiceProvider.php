@@ -4,7 +4,8 @@ namespace Modules\Property\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
-
+use Modules\UserManagement\Entities\Permission;
+use Gate;
 
 class PropertyServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,11 @@ class PropertyServiceProvider extends ServiceProvider
     {
         /* TODO: ADD ROUTE FILES HERE */
         $this->loadRoutesFrom(base_path('Modules/Property/Http/routes.php'));
+        Permission::get()->map(function ($permission){
+            Gate::define($permission->slug, function($user) use ($permission){
+                return $user->hasPermissionTo($permission);
+            });
+        });
     }
 
     /**

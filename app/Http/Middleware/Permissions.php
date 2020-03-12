@@ -17,7 +17,7 @@ class Permissions
     {
         if(!$request->user()->hasPermissionTo($permission))
         {
-            return abort(404, "Access denied for this resource!");
+            return abort(404, "Permission denied for this resource!");
         }
         return $next($request);
     }

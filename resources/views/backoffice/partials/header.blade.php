@@ -25,7 +25,7 @@
                   @endcan --}}
                   <a class="dropdown-item" href="#">Properties</a>
                   <a class="dropdown-item" href="#">Reports</a>
-                  <a class="dropdown-item" href="#">Property Categories</a>
+                  <a class="dropdown-item" href="{{route('propertyCategoryIndex')}}">Property Categories</a>
                   <a class="dropdown-item" href="#">Manage Property Viewing Appointments</a>
                 </div>
             </li>

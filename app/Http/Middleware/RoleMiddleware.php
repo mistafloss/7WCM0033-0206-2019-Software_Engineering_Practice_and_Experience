@@ -14,11 +14,12 @@ class RoleMiddleware
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
+    { 
         $actions = $request->route()->getAction();
         $roles = isset($actions['roles']) ? $actions['roles'] : null;
-    
+       
         if(!$request->user()->hasAnyRole($roles)){
+            
             return abort(404, "Access denied for this resource!");
         }
         return $next($request);

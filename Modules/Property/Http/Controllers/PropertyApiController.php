@@ -3,70 +3,63 @@
 namespace Modules\Property\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
-
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Modules\Property\Services\PropertyService;
+use Validator;
+use Illuminate\Http\Request;
 
 
 class PropertyApiController extends BaseController
 {
-
+    use  ValidatesRequests, AuthorizesRequests;
     /**
-     * List Foo objects
-     *  Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function list(Request $request)
-    {
-        $per_page = $request->has('per_page') ? $request->get('per_page'): 10;
-        return response()->json(['success' => true, 'data' => FooService::list($per_page)]);
-    }
-
-
-    /**
-     * Create new Foo object
+     * Create new Property Category object
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function create(Request $request)
+    public function createPropertyCategory(Request $request)
     {
-        /** DO VALIDATE */
+        $rules = array(
+            'name' => 'required',
+        );
+        $messages = array('name.required' => 'This field is required');
+        $this->validate( $request , $rules, $messages);
+        $data = $request->all();
+        $propertyCategory = PropertyService::createCategory($data);
+        return response()->json(['success' => true, 'data' => $propertyCategory]);
+    }
 
-        $data = $request->except('_token');
-
-        $newObject = Foo::create($data);
-        return response()->json(['success' => true, 'data' => $newObject]);
+    
+    /**
+     * View Property Category 
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function viewPropertyCategory($id)
+    {
+        $category = PropertyService::getCategoryById($id);
+        return response()->json(['success' => true, 'data' => $category]);
     }
 
 
     /**
-     * View a Foo object
+     * Update a Property Category
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function view($id)
+    public function updatePropertyCategory(Request $request)
     {
-        $object = Foo::find($id);
-
-       return response()->json(['success' => true, 'data' => $object]);
-    }
-
-
-    /**
-     * Update a Foo object
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function update(Request $request, $id)
-    {
-         /** DO VALIDATE */
-
+        $rules = array(
+            'name' => 'required',
+        );
+        $messages = array('name.required' => 'This field is required');
+        $this->validate( $request , $rules, $messages);
         $data = $request->except('_token');
 
-        $object = Foo::find($id);
+        $category = PropertyService::updatePropertyCategory($data);
 
-        $object->update($data);
-
-         return response()->json(['success' => true, 'data' => $object]);
+         return response()->json(['success' => true, 'data' => $category]);
     }
 
 

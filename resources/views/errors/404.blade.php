@@ -42,7 +42,7 @@
             <div class="card">
               <div class="card-body p-5">
                 <div class="display-1 text-200 fs-error">404</div>
-                <p class="lead mt-4 text-800 text-sans-serif font-weight-semi-bold">Access denied for the resource you are trying to access!</p>
+                <p class="lead mt-4 text-800 text-sans-serif font-weight-semi-bold">The resource you are looking for does not exist.</p>
                 <a href="{{route('backofficeDashboard')}}">Go back to Dashboard</a>
                 <hr />
                 

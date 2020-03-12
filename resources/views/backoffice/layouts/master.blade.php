@@ -21,6 +21,11 @@
         <script src="{{ asset('js/all.js') }}"></script>    
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <style>
+            .loading{
+                display:none;
+            }
+        </style>
     </head>
        
         
