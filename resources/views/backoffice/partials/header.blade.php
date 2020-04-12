@@ -23,9 +23,9 @@
                   {{-- @can('can_view_list_of_users')
                   <a class="dropdown-item" href="#">Properties</a>
                   @endcan --}}
-                  <a class="dropdown-item" href="#">Properties</a>
+                  <a class="dropdown-item" href="{{route('propertyIndex')}}">Properties</a>
                   <a class="dropdown-item" href="#">Reports</a>
-                  <a class="dropdown-item" href="{{route('propertyCategoryIndex')}}">Property Categories</a>
+                  <a class="dropdown-item" href="{{route('propertyCategoryIndex')}}">Property Types</a>
                   <a class="dropdown-item" href="#">Manage Property Viewing Appointments</a>
                 </div>
             </li>

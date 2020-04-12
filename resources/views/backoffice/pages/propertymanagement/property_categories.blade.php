@@ -7,7 +7,7 @@
 <div class="card mt-10">
   <div class="card-header">
     <div class="float-left">
-        <h5> Property Categories</h5>
+        <h5> Property Types</h5>
     </div>
     <span class="float-right">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPropertyCategoryModal">

@@ -19,4 +19,9 @@ class PropertyController extends BaseController
         return view('backoffice.pages.propertymanagement.property_categories', compact('categories'));
     }
 
+    public function propertyIndex(Request $request)
+    {
+        return view('backoffice.pages.propertymanagement.properties');
+    }
+
 }
