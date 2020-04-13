@@ -25,7 +25,7 @@ Route::group(['prefix' => 'backoffice/property', 'middleware' => ['web','roles']
     // Note the empty prefix on the route names! use this route group to serve view files
      Route::get('types',           ['uses' => 'PropertyController@categoryIndex',   'as' => 'propertyCategoryIndex']);
      Route::get('listings',          ['uses' => 'PropertyController@propertyIndex', 'as' => 'propertyIndex']);
-    // Route::get('view/{id}',      ['uses' => 'FooController@view',   'as' => '_fooView']);
+     Route::get('add-new',      ['uses' => 'PropertyController@addNewProperty',   'as' => 'addNewProperty']);
     // Route::put('update/{id}',      ['uses' => 'FooController@update', 'as' => '_fooUpdate']);
     // Route::delete('delete',   ['uses' => 'FooController@delete', 'as' => '_fooDelete']);
 

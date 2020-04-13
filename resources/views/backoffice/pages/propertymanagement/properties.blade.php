@@ -8,7 +8,7 @@
         <h5> Listed Properties</h5>
     </div>
     <span class="float-right">
-        <a href="#" class="btn btn-primary">+ Add New Property</a>
+        <a href="{{route('addNewProperty')}}" class="btn btn-primary">+ Add New Property</a>
     </span>
   </div>
   <div class="card-body">
@@ -50,5 +50,5 @@
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/property_categories.js') }}"></script> 
+<script src="{{ asset('js/properties.js') }}"></script> 
 @endsection

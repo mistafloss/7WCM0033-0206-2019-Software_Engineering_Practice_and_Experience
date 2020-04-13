@@ -24,4 +24,8 @@ class PropertyController extends BaseController
         return view('backoffice.pages.propertymanagement.properties');
     }
 
+    public function addNewProperty(Request $request)
+    {
+        return view('backoffice.pages.propertymanagement.newproperty');
+    }
 }
