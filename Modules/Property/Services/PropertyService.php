@@ -44,8 +44,5 @@ class PropertyService
         {   
             return $ex->getMessage();
         }
-       
-
-
     }
 }

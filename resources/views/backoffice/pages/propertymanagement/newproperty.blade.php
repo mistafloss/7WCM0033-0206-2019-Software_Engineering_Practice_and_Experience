@@ -101,22 +101,27 @@
             </div>
             <hr/>
             <!-- ROW END -->
+
+            <!--ROW -->
             <div class="row">
-                <div class="col">
-                <label for="">Upload Property Image</label>
-                    <div class="input-group">
+                <div class="col colPropertyImageControls">
+                    <label for="">Upload Property Image</label>
+                    <div class="input-group property-image">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="propertyImage" required>
+                                <input type="file" class="custom-file-input" name="propertyImage[]" required>
                                 <label class="custom-file-label" for="propertyImage">Choose file...</label>
                             </div>
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-danger" type="button" id="inputGroupFileAddon04"><i class="far fa-plus-square"></i></button>
-                            </div>
+                            <span class="input-group-append">
+                                <a class="btn btn-outline-danger removeImageUpload"><i class="far fa-minus-square"></i></a>
+                            </span>
                     </div>
-
                 </div>
-                <div class="col"></div>
+
+                <div class="col">
+                        <a class="btn btn-outline-primary" id="btnAddPropertyImageUpload"><i class="far fa-plus-square"></i></a> 
+                </div>
             </div>
+            <!-- ROW END -->
         </div>
 
         <div class="card-footer">
