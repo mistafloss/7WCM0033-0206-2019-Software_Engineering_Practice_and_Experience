@@ -69,8 +69,27 @@ class PropertyApiController extends BaseController
      */
     public function createProperty(Request $request)
     {
-        
+        $rules = array(
+            'listing_title' => 'required',
+            'house_number' => 'required',
+            'street' => 'required',
+            'city' => 'required',
+            'postcode' => 'required',
+            'property_features' => 'required',
+            'property_description' => 'required',
+            'property_category_id' => 'required',
+            'property_price' => 'required',
+            'property_status' => 'required',
+            'publish_property' => 'required',
+            // 'property_images' => 'required|mimes:png,gif,jpeg,jpg'
+        );
 
+        $this->validate($request,$rules);
+        $data = $request->all();
+    
+        $propertySaved = PropertyService::createProperty($data);
+       // return response()->json(['success' => true, 'data' => $data]);
+        return response()->json(['success' => true, 'data' => $propertySaved]);
     }
 
     /**

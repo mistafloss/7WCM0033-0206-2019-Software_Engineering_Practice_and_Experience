@@ -11,7 +11,7 @@ Route::group(['prefix' => 'api', 'middleware' => ['web','roles'], 'roles' => ['D
     Route::post('create/property-category',   ['uses' => 'PropertyApiController@createPropertyCategory', 'as' => 'API_createPropertyCategory']);
     Route::post('property-category/update',      ['uses' => 'PropertyApiController@updatePropertyCategory', 'as' => 'API_editPropertyCategory']);
     Route::get('property-category/show/{id}',      ['uses' => 'PropertyApiController@viewPropertyCategory',   'as' => 'API_viewPropertyCategory']);
-   
+    Route::post('create/property',   ['uses' => 'PropertyApiController@createProperty', 'as' => 'API_createProperty']);
     /*
         For filtering, use Query parameters
         /foo?id=someId&role=someRole
