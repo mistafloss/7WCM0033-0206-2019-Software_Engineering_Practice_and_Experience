@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    
+
     if($('.property-image').length == 1){
         $('.property-image:first').find('.removeImageUpload').addClass('disabled');
     }
@@ -25,5 +25,41 @@ $(document).ready(function(){
         }
     });
 
-
 });
+  
+    $('#propertyImages').change(function(){
+        var fileList = $('#selectedImagesList');
+        var images ="";
+        var files = $(this)[0].files;
+        var lg = files.length;
+    
+        for(var i = 0; i < lg; ++i){
+            images += '<li>' + files.item(i).name + '</li>';
+        }
+        $('#selectedImagesList ul').remove();
+        fileList.append('<ul>'+images+'</ul>');
+    });
+
+
+
+$('#btn_save_property').click(function(e){
+    e.preventDefault(e);
+    $('.loading').css('display','block');
+    $("#btn_save_property").attr("disabled", true);
+    $.ajax({
+           type:'POST',
+           url:$('#actionUrl').val(),
+           headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+           data:{
+               
+              
+           },
+           success:function(response){
+            
+           },
+           error: function(response){
+            
+           }
+    });
+  
+  });

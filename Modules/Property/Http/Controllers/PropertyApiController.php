@@ -62,6 +62,16 @@ class PropertyApiController extends BaseController
          return response()->json(['success' => true, 'data' => $category]);
     }
 
+    /**
+     * Create a Property
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function createProperty(Request $request)
+    {
+        
+
+    }
 
     /**
      * Delete a Foo object
