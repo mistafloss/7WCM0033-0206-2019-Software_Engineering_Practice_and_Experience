@@ -73,7 +73,9 @@
                                 <label for="">Property Type</label>
                                 <select class="form-control" id="propertyType" name="property_category_id">
                                     <option value="">--Select Property Type--</option>
-                                    <option value="1">Bungalow</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach    
                                 </select>
                                 <span class="text-danger" id="propertyType_error"> </span>
                             </div>

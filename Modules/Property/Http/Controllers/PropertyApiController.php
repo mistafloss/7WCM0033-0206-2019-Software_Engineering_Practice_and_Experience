@@ -92,10 +92,18 @@ class PropertyApiController extends BaseController
             ];
          $this->validate($request,$rules, $messages);
          $data = $request->all();
-
-        //return response()->json(['success' => true, 'data' => $data]);
         $propertySaved = PropertyService::createProperty($data);
         return response()->json(['success' => true, 'data' => $propertySaved]);
+    }
+    
+     /**
+     * Update a Property 
+     * @param $property object
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateProperty(Request $request)
+    {
+
     }
 
     /**

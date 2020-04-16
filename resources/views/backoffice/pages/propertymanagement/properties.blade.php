@@ -24,23 +24,30 @@
             </tr>
           </thead>
           <tbody>
-            
+            @foreach($properties as $property)
             <tr>
-              <th scope="row">1</th>
-              <td>Bungalow</td>
-              <td>Nile Road, Southampton. SO32 5AD </td> 
-              <td>For Sale</td>
-              <td> <span class="badge badge-pill badge-primary"> YES</span></td>
-              <td> <a href="" class="btn btn-primary"> View </a> | <a href="" class="btn btn-success"> Edit </a> </td> 
+              <th scope="row">{{$property->id}}</th>
+              <td>{{$property->category->name}}</td>
+              <td>{{$property->house_number}}, {{$property->street}}, {{$property->city}}. {{$property->postcode}}</td> 
+              <td>{{$property->status}}</td>
+              <td> 
+                @if($property->visibility == 1)
+                  <span class="badge badge-pill badge-primary"> YES</span>
+                @else
+                  <span class="badge badge-pill badge-danger"> NO</span>
+                @endif
+              </td>
+              <td> <a href="{{route('showProperty',$property->id)}}" class="btn btn-success"> Edit </a> </td> 
             </tr>
-            <tr>
+            @endforeach
+            <!-- <tr>
               <th scope="row">2</th>
               <td>House</td>
               <td>Nile Road, Southampton. SO32 5AD </td> 
               <td>For Rent</td>
               <td> <span class="badge badge-pill badge-danger"> NO</span></td>
               <td> <a href="" class="btn btn-primary"> View </a> | <a href="" class="btn btn-success"> Edit </a> </td> 
-            </tr>
+            </tr> -->
           </tbody>
         </table>
   </div>

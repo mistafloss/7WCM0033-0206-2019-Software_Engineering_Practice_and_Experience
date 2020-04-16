@@ -20,12 +20,29 @@ class PropertyController extends BaseController
     }
 
     public function propertyIndex(Request $request)
-    {
-        return view('backoffice.pages.propertymanagement.properties');
+    {   
+        $properties = PropertyService::getAllProperties();
+        return view('backoffice.pages.propertymanagement.properties', compact('properties'));
     }
 
     public function addNewProperty(Request $request)
     {
-        return view('backoffice.pages.propertymanagement.newproperty');
+        $categories = PropertyService::getAllCategories();
+        return view('backoffice.pages.propertymanagement.newproperty', compact('categories'));
+    }
+
+    public function showProperty($id)
+    {
+        $categories = PropertyService::getAllCategories();
+        $property = PropertyService::getPropertyById($id);
+        return view('backoffice.pages.propertymanagement.editproperty', compact('categories','property'));
+    }
+
+    public function updateProperty(Request $request)
+    {
+        //validate
+        //send valid data to api controller
+        //api controller updateProperty method will return true in json payload if update is sucessful
+        //this method will listen for the success in the json payload and redirect to properties index
     }
 }

@@ -95,4 +95,14 @@ class PropertyService
             return $ex->getMessage();
         }
     }
+
+    public static function getPropertyById($id)
+    {
+        return Property::find($id);
+    }
+
+    public static function getAllProperties()
+    {
+        return Property::all();
+    }
 }

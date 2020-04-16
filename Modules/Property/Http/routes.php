@@ -10,6 +10,7 @@ Route::group(['prefix' => 'api', 'middleware' => ['web','roles'], 'roles' => ['D
 
     Route::post('create/property-category',   ['uses' => 'PropertyApiController@createPropertyCategory', 'as' => 'API_createPropertyCategory']);
     Route::post('property-category/update',      ['uses' => 'PropertyApiController@updatePropertyCategory', 'as' => 'API_editPropertyCategory']);
+    Route::post('property/update',      ['uses' => 'PropertyApiController@updateProperty', 'as' => 'API_editProperty']);
     Route::get('property-category/show/{id}',      ['uses' => 'PropertyApiController@viewPropertyCategory',   'as' => 'API_viewPropertyCategory']);
     Route::post('create/property',   ['uses' => 'PropertyApiController@createProperty', 'as' => 'API_createProperty']);
     /*
@@ -26,7 +27,7 @@ Route::group(['prefix' => 'backoffice/property', 'middleware' => ['web','roles']
      Route::get('types',           ['uses' => 'PropertyController@categoryIndex',   'as' => 'propertyCategoryIndex']);
      Route::get('listings',          ['uses' => 'PropertyController@propertyIndex', 'as' => 'propertyIndex']);
      Route::get('add-new',      ['uses' => 'PropertyController@addNewProperty',   'as' => 'addNewProperty']);
-    // Route::put('update/{id}',      ['uses' => 'FooController@update', 'as' => '_fooUpdate']);
+     Route::get('show/{id}',      ['uses' => 'PropertyController@showProperty',   'as' => 'showProperty']);
     // Route::delete('delete',   ['uses' => 'FooController@delete', 'as' => '_fooDelete']);
 
 });

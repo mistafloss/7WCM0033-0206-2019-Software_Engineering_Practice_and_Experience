@@ -12,7 +12,7 @@ class Property extends Model
 
     public function category()
     {
-        return $this->belongsTo(PropertyCategory::class,'property_categories');
+        return $this->belongsTo(PropertyCategory::class,'property_category_id');
     }
   
     public function images()
