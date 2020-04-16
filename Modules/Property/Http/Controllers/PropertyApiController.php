@@ -69,6 +69,7 @@ class PropertyApiController extends BaseController
      */
     public function createProperty(Request $request)
     {
+       
         $rules = array(
             'listing_title' => 'required',
             'house_number' => 'required',
@@ -81,14 +82,19 @@ class PropertyApiController extends BaseController
             'property_price' => 'required',
             'property_status' => 'required',
             'publish_property' => 'required',
-            // 'property_images' => 'required|mimes:png,gif,jpeg,jpg'
+            'property_images' => 'required',
+            'property_images.*' => 'mimes:png,gif,jpeg,jpg'
         );
 
-        $this->validate($request,$rules);
-        $data = $request->all();
-    
+         $messages = [
+             'property_category_id.required' => 'The property type field is required',
+             'property_images.required' => 'Please upload at least one image for the property'
+            ];
+         $this->validate($request,$rules, $messages);
+         $data = $request->all();
+
+        //return response()->json(['success' => true, 'data' => $data]);
         $propertySaved = PropertyService::createProperty($data);
-       // return response()->json(['success' => true, 'data' => $data]);
         return response()->json(['success' => true, 'data' => $propertySaved]);
     }
 

@@ -121,7 +121,7 @@
                         <label for="">Upload Property Images</label>
                         <div class="input-group property-image">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="propertyImages" name="property_images[]" multiple >
+                                    <input type="file" class="custom-file-input" id="propertyImages" name="property_images[]" multiple accept="image/*" >
                                     <label class="custom-file-label" for="propertyImage">Choose file...</label>
                                 </div>
                                 <!-- <span class="input-group-append">
@@ -149,6 +149,7 @@
                     <span>Please wait...</span>
                 </div>
                 <input type="hidden" value="{{route('API_createProperty')}}" id="actionUrl" />
+                <input type="hidden" value="{{route('propertyIndex')}}" id="propertyListUrl" />
                 <button type="submit" style="width:50%; float:right;" class="btn btn-success" id="btn_save_property"> <i class="far fa-save"></i> Save Property</button>
             </div>
         </div>
@@ -160,10 +161,19 @@
 
 @section('scripts')
 <script src="https://cdn.tiny.cloud/1/u172uoi4atzuwml8mdg1mmll9ju6rlj6h74g30lbqcn160xv/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-<script src="{{ asset('js/properties.js') }}"></script> 
+<script src="{{ asset('js/add_property.js') }}"></script> 
 <script>
       tinymce.init({
-        selector: '.tiny-textarea'
+        selector: '.tiny-textarea',
+        plugins: [
+        "advlist lists"
+        ],
+        toolbar: "undo redo | bold italic underline strikethrough | bullist numlist | fontselect fontsizeselect formatselect",
+        setup: function (editor) {
+            editor.on('change', function () {
+                editor.save();
+            });
+        }
       });
     </script>
 @endsection
