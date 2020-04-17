@@ -105,4 +105,75 @@ class PropertyService
     {
         return Property::all();
     }
+
+
+    public static function deletePhoto($data)
+    {
+        try
+        {
+            $photo = PropertyImage::find($data['image_id']);
+            Cloudder::delete($photo->property_file);
+            return PropertyImage::destroy($data['image_id']);
+
+        }
+        catch(\Exception $ex)
+        {
+            return $ex->getMessage();
+        }
+    }
+
+    public static function updateProperty($data)
+    {
+        try
+        {
+            $property = self::getPropertyById($data['property_id']);
+            $property->listing_title = $data['listing_title'];
+            $property->house_number = $data['house_number'];
+            $property->street = $data['street'];
+            $property->city = $data['city'];
+            $property->postcode = $data['postcode'];
+            $property->country = $data['country'];
+            $property->features = $data['property_features'];
+            $property->description = $data['property_description'];
+            $property->property_category_id = $data['property_category_id'];
+            $property->status = $data['property_status'];
+            $property->property_price = $data['property_price'];
+            if($data['property_price'] == 'For Sale'){
+                $property->payment_frequency = "Once";
+            }elseif($data['property_price'] == 'To Let'){
+                $property->payment_frequency = "Monthly";
+            }
+            $property->visibility = $data['publish_property'];
+            $isSaved = $property->save();
+            if($isSaved){
+                if(!empty($data['property_images']) ){
+                    foreach($data['property_images'] as $image){
+                        self::submitImage($image, $property); 
+                    }
+                }       
+            }
+            return $isSaved;
+        }
+        catch(\Exception $ex)
+        {
+            return $ex->getMessage();
+        }
+    }
+
+    public static function submitImage($image, $property)
+    {
+        $imageName = $image->getClientOriginalName();
+        $imagePrefix = mt_rand(1,99999);
+        $imageFilePath = $image->getRealPath();
+        Cloudder::upload($imageFilePath, $imagePrefix.$imageName);
+        $imageCloudinaryId = Cloudder::getPublicId();
+        $imageFileCloudResource = array();
+        $imageFileCloudResource = Cloudder::getResult($imageCloudinaryId);
+        $imageUrl = $imageFileCloudResource['url'];
+
+        $imageFileData['property_id'] = $property->id;
+        $imageFileData['property_file'] = $imagePrefix.$imageName;
+        $imageFileData['image_url'] = $imageUrl;
+        PropertyImage::create($imageFileData);
+    }
 }

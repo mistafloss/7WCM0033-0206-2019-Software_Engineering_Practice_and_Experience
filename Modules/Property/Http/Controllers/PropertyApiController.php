@@ -79,7 +79,7 @@ class PropertyApiController extends BaseController
             'property_features' => 'required',
             'property_description' => 'required',
             'property_category_id' => 'required',
-            'property_price' => 'required',
+            'property_price' => 'required|numeric',
             'property_status' => 'required',
             'publish_property' => 'required',
             'property_images' => 'required',
@@ -96,15 +96,6 @@ class PropertyApiController extends BaseController
         return response()->json(['success' => true, 'data' => $propertySaved]);
     }
     
-     /**
-     * Update a Property 
-     * @param $property object
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function updateProperty(Request $request)
-    {
-
-    }
 
     /**
      * Delete a Foo object

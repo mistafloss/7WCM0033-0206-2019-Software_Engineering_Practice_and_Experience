@@ -3,11 +3,15 @@
 namespace Modules\Property\Http\Controllers;
 use Illuminate\Http\Request;
 use Modules\Property\Services\PropertyService;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Validator;
 
 use Illuminate\Routing\Controller as BaseController;
 
 class PropertyController extends BaseController
 {
+    use  ValidatesRequests;
+
     public function __construct(Request $request)
     {
        $this->middleware('auth');
@@ -40,9 +44,38 @@ class PropertyController extends BaseController
 
     public function updateProperty(Request $request)
     {
-        //validate
-        //send valid data to api controller
-        //api controller updateProperty method will return true in json payload if update is sucessful
-        //this method will listen for the success in the json payload and redirect to properties index
+        $rules = array(
+            'listing_title' => 'required',
+            'house_number' => 'required',
+            'street' => 'required',
+            'city' => 'required',
+            'postcode' => 'required',
+            'property_features' => 'required',
+            'property_description' => 'required',
+            'property_category_id' => 'required',
+            'property_price' => 'required|numeric',
+            'property_status' => 'required',
+            'publish_property' => 'required',
+            'property_images.*' => 'mimes:png,gif,jpeg,jpg'
+        );
+     
+        $messages = [
+            'property_category_id.required' => 'The property type field is required',
+        ];
+
+        $this->validate($request,$rules, $messages);
+        $data = $request->all();
+        $propertyUpdated = PropertyService::updateProperty($data);
+        if($propertyUpdated){
+            return redirect()->route('propertyIndex')->with('propetyUpdateSuccess', 'Property successfully updated');
+        }
+    }
+
+    public function deleteImage(Request $request)
+    {
+        $data = $request->all();
+        if(PropertyService::deletePhoto($data)){
+            return redirect()->route('showProperty', $data['property_id'])->with('imageDeleteSuccess', 'Photo successfully deleted');
+        }
     }
 }

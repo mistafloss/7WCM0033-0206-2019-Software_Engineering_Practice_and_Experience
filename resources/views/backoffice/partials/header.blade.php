@@ -24,9 +24,10 @@
                   <a class="dropdown-item" href="#">Properties</a>
                   @endcan --}}
                   <a class="dropdown-item" href="{{route('propertyIndex')}}">Properties</a>
-                  <a class="dropdown-item" href="#">Reports</a>
                   <a class="dropdown-item" href="{{route('propertyCategoryIndex')}}">Property Types</a>
-                  <a class="dropdown-item" href="#">Manage Property Viewing Appointments</a>
+                  <a class="dropdown-item" href="#">Tenancies</a>
+                  <a class="dropdown-item" href="#">Sales</a>
+                  <a class="dropdown-item" href="#">Viewing Appointments</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -39,6 +40,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">Buyers</a>
                   <a class="dropdown-item" href="#">Sellers</a>
+                  <a class="dropdown-item" href="#">Tenants</a>
                 </div>
             </li>
             <li class="nav-item">

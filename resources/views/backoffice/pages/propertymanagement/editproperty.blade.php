@@ -3,7 +3,7 @@
 
 <div class="container ">
     <!-- CARD BEGIN -->
-    <form id="editPropertyForm" enctype="multipart/form-data" method="POST">    
+    <form action="{{route('updateProperty')}}" enctype="multipart/form-data" method="POST">    
         <div class="card mt-10">
             <div class="card-header">
                 <div class="float-left">
@@ -156,9 +156,15 @@
                 <div class="row">
                     <div class="col">
                         <label for="">Uploaded Property Images</label><br/>
+                            <!-- @if(Session::has('imageDeleteSuccess'))
+                                <div class="alert alert-success">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    {{Session::get('imageDeleteSuccess')}}
+                                </div>
+                            @endif -->
                         @foreach($property->images as $image)
                             <img src="{{$image->image_url}}"  width="150px;" height="100px">
-                            <button class="btn btn-danger" class="delete-photo"><i class="far fa-trash-alt"></i></button>
+                            <a class="btn btn-danger" data-imageid="{{$image->id}}" href="#" class="" data-toggle="modal" data-target="#deleteImageModal"><i class="far fa-trash-alt"></i></a>
                         @endforeach
                     </div>
                 </div>
@@ -190,18 +196,39 @@
             </div>
 
             <div class="card-footer">
-                <div class="loading">
-                    <div class="spinner-border text-dark" role="status">
-                    </div>
-                    <span>Please wait...</span>
-                </div>
-                <input type="hidden" value="{{route('API_editProperty')}}" id="actionUrl" />
-                <input type="hidden" value="{{route('propertyIndex')}}" id="propertyListUrl" />
+                
+                <input type="hidden" value="{{$property->id}}" name="property_id" />
+                {{csrf_field()}}
                 <button type="submit" style="width:50%; float:right;" class="btn btn-success" id="btn_save_property"> <i class="far fa-save"></i> Update Property</button>
             </div>
         </div>
     </form>
     <!-- CARD END -->
+</div>
+
+<!--Delete Image Modal -->
+<div class="modal fade" id="deleteImageModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete this property image?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     <form action="{{route('deleteImage')}}" method="post">
+        {{csrf_field()}}
+      <div class="modal-body">
+         By clicking continue, you permanently remove this photo. This action cannot be undone.
+         <input type="hidden" name="image_id" id="image_id" value=""/>
+         <input type="hidden" name="property_id" value="{{$property->id}}"/>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-danger">Continue</button>
+      </div>
+      </form>
+    </div>
+  </div>
 </div>
 
 @endsection

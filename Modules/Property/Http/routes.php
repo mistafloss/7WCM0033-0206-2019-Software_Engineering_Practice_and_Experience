@@ -24,10 +24,12 @@ Route::group(['prefix' => 'api', 'middleware' => ['web','roles'], 'roles' => ['D
 Route::group(['prefix' => 'backoffice/property', 'middleware' => ['web','roles'],'roles' => ['Developer','Primary Admin','Manager','Staff'], 'namespace' => 'Modules\Property\Http\Controllers'], function () {
 
     // Note the empty prefix on the route names! use this route group to serve view files
-     Route::get('types',           ['uses' => 'PropertyController@categoryIndex',   'as' => 'propertyCategoryIndex']);
-     Route::get('listings',          ['uses' => 'PropertyController@propertyIndex', 'as' => 'propertyIndex']);
-     Route::get('add-new',      ['uses' => 'PropertyController@addNewProperty',   'as' => 'addNewProperty']);
-     Route::get('show/{id}',      ['uses' => 'PropertyController@showProperty',   'as' => 'showProperty']);
+     Route::get('types',     ['uses' => 'PropertyController@categoryIndex',   'as' => 'propertyCategoryIndex']);
+     Route::get('listings',  ['uses' => 'PropertyController@propertyIndex', 'as' => 'propertyIndex']);
+     Route::get('add-new',   ['uses' => 'PropertyController@addNewProperty',   'as' => 'addNewProperty']);
+     Route::get('show/{id}', ['uses' => 'PropertyController@showProperty',   'as' => 'showProperty']);
+     Route::post('update',  ['uses' => 'PropertyController@updateProperty', 'as' => 'updateProperty']);
+     Route::post('delete-image', ['uses' => 'PropertyController@deleteImage', 'as' => 'deleteImage']);
     // Route::delete('delete',   ['uses' => 'FooController@delete', 'as' => '_fooDelete']);
 
 });
