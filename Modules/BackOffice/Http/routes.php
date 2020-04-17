@@ -24,11 +24,16 @@ Route::group(['prefix' => 'api', 'middleware' => ['web','acl'], 'namespace' => '
 });
 
 
+
 Route::group(['prefix' => 'backoffice', 'middleware' => ['web'], 'namespace' => 'Modules\BackOffice\Http\Controllers'], function () {
 
+    //
     Route::get('/', ['uses' => 'BackOfficeController@index', 'as' => 'backofficeIndex']);
     Route::get('dashboard', ['uses' => 'BackOfficeController@dashboard', 'as' => 'backofficeDashboard', 'middleware' => 'auth']);
-    Route::get('view/{id}',      ['uses' => 'FooController@view',   'as' => '_fooView']);
+
+    Route::get('partners',  ['uses' => 'PartnerController@index',  'as' => 'partnerIndex' , 'middleware' => ['roles'], 'roles' => ['Developer','Primary Admin','Manager','Staff'] ]);
+    Route::get('add-new-partner',  ['uses' => 'PartnerController@addNew',  'as' => 'addNewPartner' , 'middleware' => ['roles'], 'roles' => ['Developer','Primary Admin','Manager','Staff'] ]);
+
     Route::put('update/{id}',      ['uses' => 'FooController@update', 'as' => '_fooUpdate']);
     Route::delete('delete',   ['uses' => 'FooController@delete', 'as' => '_fooDelete']);
 
