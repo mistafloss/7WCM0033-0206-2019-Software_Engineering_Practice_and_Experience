@@ -4,12 +4,12 @@
 <div class="container ">
 <div class="card mt-10">
   <div class="card-header">
-    <!-- @if(Session::has('propetyUpdateSuccess'))
+    @if(Session::has('partnerSuccess'))
         <div class="alert alert-success">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-            {{Session::get('propetyUpdateSuccess')}}
+            {{Session::get('partnerSuccess')}}
         </div>
-    @endif -->
+    @endif
     <div class="float-left">
         <h5> Partners</h5>
     </div>
@@ -30,15 +30,22 @@
             </tr>
           </thead>
           <tbody>
-          
+          @foreach($partners as $partner)
             <tr>
-              <th scope="row">2</th>
-              <td>John</td>
-              <td>Doe</td> 
-              <td>Tenant</td>
-              <td> <span class="badge badge-pill badge-primary"> Yes</span></td>
-              <td> <a href="" class="btn btn-success"> Edit </a> </td> 
+              <th scope="row">{{$partner->id}}</th>
+              <td>{{$partner->first_name}}</td>
+              <td>{{$partner->last_name}}</td> 
+              <td>{{$partner->category->name}}</td>
+              <td> 
+                @if($partner->status == 1)
+                  <span class="badge badge-pill badge-primary"> YES</span>
+                @else
+                  <span class="badge badge-pill badge-danger"> NO</span>
+                @endif
+              </td>
+              <td> <a href="{{route('showPartner', $partner->id)}}" class="btn btn-success"> Edit </a> </td> 
             </tr>
+          @endforeach  
           </tbody>
         </table>
   </div>

@@ -31,10 +31,12 @@ Route::group(['prefix' => 'backoffice', 'middleware' => ['web'], 'namespace' => 
     Route::get('/', ['uses' => 'BackOfficeController@index', 'as' => 'backofficeIndex']);
     Route::get('dashboard', ['uses' => 'BackOfficeController@dashboard', 'as' => 'backofficeDashboard', 'middleware' => 'auth']);
 
-    Route::get('partners',  ['uses' => 'PartnerController@index',  'as' => 'partnerIndex' , 'middleware' => ['roles'], 'roles' => ['Developer','Primary Admin','Manager','Staff'] ]);
-    Route::get('add-new-partner',  ['uses' => 'PartnerController@addNew',  'as' => 'addNewPartner' , 'middleware' => ['roles'], 'roles' => ['Developer','Primary Admin','Manager','Staff'] ]);
-
-    Route::put('update/{id}',      ['uses' => 'FooController@update', 'as' => '_fooUpdate']);
-    Route::delete('delete',   ['uses' => 'FooController@delete', 'as' => '_fooDelete']);
-
+    Route::group(['middleware' => ['roles'] ,'roles' => ['Developer','Primary Admin','Manager','Staff']] , function(){
+        Route::get('partners',  ['uses' => 'PartnerController@index',  'as' => 'partnerIndex' ]);
+        Route::get('add-new-partner',  ['uses' => 'PartnerController@addNew',  'as' => 'addNewPartner']);
+        Route::post('createpartner',   ['uses' => 'PartnerController@createPartner', 'as' => 'createPartner']);
+        Route::get('partner/show/{id}', ['uses' => 'PartnerController@showPartner',   'as' => 'showPartner']);
+        Route::post('updatepartner', ['uses' => 'PartnerController@updatePartner', 'as' => 'updatePartner']);
+    });
+   
 });

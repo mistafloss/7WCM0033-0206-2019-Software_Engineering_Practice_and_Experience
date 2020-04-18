@@ -196,7 +196,6 @@
             </div>
 
             <div class="card-footer">
-                
                 <input type="hidden" value="{{$property->id}}" name="property_id" />
                 {{csrf_field()}}
                 <button type="submit" style="width:50%; float:right;" class="btn btn-success" id="btn_save_property"> <i class="far fa-save"></i> Update Property</button>

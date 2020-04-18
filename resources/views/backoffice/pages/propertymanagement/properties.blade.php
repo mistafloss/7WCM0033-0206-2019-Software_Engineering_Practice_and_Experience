@@ -4,10 +4,10 @@
 <div class="container ">
 <div class="card mt-10">
   <div class="card-header">
-    @if(Session::has('propetyUpdateSuccess'))
+    @if(Session::has('propertyUpdateSuccess'))
         <div class="alert alert-success">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-            {{Session::get('propetyUpdateSuccess')}}
+            {{Session::get('propertyUpdateSuccess')}}
         </div>
     @endif
     <div class="float-left">

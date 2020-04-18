@@ -67,7 +67,7 @@ class PropertyController extends BaseController
         $data = $request->all();
         $propertyUpdated = PropertyService::updateProperty($data);
         if($propertyUpdated){
-            return redirect()->route('propertyIndex')->with('propetyUpdateSuccess', 'Property successfully updated');
+            return redirect()->route('propertyIndex')->with('propertyUpdateSuccess', 'Property successfully updated');
         }
     }
 
