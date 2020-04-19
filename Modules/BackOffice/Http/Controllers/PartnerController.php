@@ -85,7 +85,6 @@ class PartnerController extends BaseController
         $this->validate($request,$rules, $messages);
         $data = $request->all();
         $partnerUpdated = PartnerService::updatePartner($data);
-        //dd($partnerUpdated);
         if($partnerUpdated){
             return redirect()->route('partnerIndex')->with('partnerSuccess', 'Partner successfully updated');
         }

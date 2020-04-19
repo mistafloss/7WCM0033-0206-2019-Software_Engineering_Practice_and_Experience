@@ -176,4 +176,9 @@ class PropertyService
         $imageFileData['image_url'] = $imageUrl;
         PropertyImage::create($imageFileData);
     }
+
+    public static function tenancies()
+    {
+        return Property::with('tenancies')->get();
+    }
 }

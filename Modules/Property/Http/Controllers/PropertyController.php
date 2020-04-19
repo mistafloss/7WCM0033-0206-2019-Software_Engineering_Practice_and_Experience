@@ -3,6 +3,7 @@
 namespace Modules\Property\Http\Controllers;
 use Illuminate\Http\Request;
 use Modules\Property\Services\PropertyService;
+use Modules\BackOffice\Services\PartnerService;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Validator;
 
@@ -77,5 +78,18 @@ class PropertyController extends BaseController
         if(PropertyService::deletePhoto($data)){
             return redirect()->route('showProperty', $data['property_id'])->with('imageDeleteSuccess', 'Photo successfully deleted');
         }
+    }
+
+    public function addNewTenancy()
+    {
+        $properties = PropertyService::getAllProperties();
+        $partners = PartnerService::getAllPartners();
+        return view('backoffice.pages.propertymanagement.add_tenancy', compact('properties','partners'));
+    }
+
+    public function getTenancies()
+    {
+        $properties = PropertyService::getAllProperties();
+        return view('backoffice.pages.propertymanagement.tenancies', compact('properties'));
     }
 }

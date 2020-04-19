@@ -29,4 +29,14 @@ class Partner extends Model
     {
         return $this->documents->where('document_title', 'Proof of Address')->first();
     }
+
+    public function tenants()
+    {
+        return $this->where('partner_id',3)->get();
+    }
+
+    public function tenancies()
+    {
+        return $this->belongsToMany(\Modules\Property\Entities\PropertyTenancy::class, 'property_tenancies');
+    }
 }

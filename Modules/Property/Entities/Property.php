@@ -19,4 +19,10 @@ class Property extends Model
     {
         return $this->hasMany(PropertyImage::class);
     }
+
+    public function tenancies()
+    {
+        return $this->hasMany(PropertyTenancy::class);
+    }
+
 }
