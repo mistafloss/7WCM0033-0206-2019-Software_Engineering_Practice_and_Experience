@@ -181,4 +181,9 @@ class PropertyService
     {
         return Property::with('tenancies')->get();
     }
+
+    public static function getPropertiesToLet()
+    {
+        return Property::where('status', 'To Let')->get();
+    }
 }

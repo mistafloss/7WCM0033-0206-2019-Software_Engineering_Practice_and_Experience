@@ -14,12 +14,13 @@
                     </span>
                 </div>
                 <div class="card-body">
+
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="">Select Property</label>
                             <select name="property_id" class="form-control" id="">
                                 <option value="">--Select Property--</option>
-                                @foreach($properties as $property)
+                                @foreach($propertiesToLet as $property)
                                     <option value="{{ $property->id }}">{{$property->house_number}}, {{$property->street}}, {{$property->city}}. {{$property->postcode}}</option>
                                 @endforeach   
                             </select>
@@ -44,13 +45,63 @@
                             </span>
                         </div>
                     </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="">Start date</label>
+                            <input type="text" class="datepicker form-control" name="start_date">
+                            <span class="text-danger"> 
+                                @if($errors->has('start_date'))
+                                    {{ $errors->first('start_date') }}
+                                @endif
+                            </span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="">End date</label>
+                            <input type="text" class="datepicker form-control" name="end_date">
+                            <span class="text-danger"> 
+                                @if($errors->has('end_date'))
+                                    {{ $errors->first('end_date') }}
+                                @endif
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="">Deposit amount</label>
+                            <input type="text" class="form-control" name="deposit_amount">
+                            <span class="text-danger"> 
+                                @if($errors->has('deposit_amount'))
+                                    {{ $errors->first('deposit_amount') }}
+                                @endif
+                            </span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            
+                        </div>
+                    </div>
+
                 </div>
                 <div class="card-footer">
-
+                    {{csrf_field()}}
+                    <button type="submit" style="width:50%; float:right;" class="btn btn-success" id=""> <i class="far fa-save"></i> Activate Tenancy</button>
                 </div>
             </div>
         </form>
     <!-- END CARD -->
 </div>
+
+@endsection
+
+@section('scripts')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+    $( ".datepicker" ).datepicker({
+        dateFormat: 'yy-mm-dd',
+    });
+  });
+  </script>
 
 @endsection

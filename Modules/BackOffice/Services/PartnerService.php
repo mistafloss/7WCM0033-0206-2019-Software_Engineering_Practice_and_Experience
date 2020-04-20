@@ -24,6 +24,12 @@ class PartnerService
     {
         return Partner::all();
     }
+
+    public static function getTenants()
+    {
+        return Partner::where('partner_category_id', 3)->get();
+    }
+
     public static function createPartner($data)
     {
         $partner = new Partner();

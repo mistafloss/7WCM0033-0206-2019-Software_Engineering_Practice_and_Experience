@@ -24,5 +24,5 @@ class Property extends Model
     {
         return $this->hasMany(PropertyTenancy::class);
     }
-
+    
 }

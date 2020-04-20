@@ -82,14 +82,19 @@ class PropertyController extends BaseController
 
     public function addNewTenancy()
     {
-        $properties = PropertyService::getAllProperties();
-        $partners = PartnerService::getAllPartners();
-        return view('backoffice.pages.propertymanagement.add_tenancy', compact('properties','partners'));
+        $propertiesToLet = PropertyService::getPropertiesToLet();
+        $partners = PartnerService::getTenants();
+        return view('backoffice.pages.propertymanagement.add_tenancy', compact('propertiesToLet','partners'));
     }
 
     public function getTenancies()
     {
         $properties = PropertyService::getAllProperties();
         return view('backoffice.pages.propertymanagement.tenancies', compact('properties'));
+    }
+
+    public function activateNewTenancy()
+    {
+        
     }
 }
