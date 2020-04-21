@@ -7,6 +7,7 @@ use Modules\BackOffice\Services\PartnerService;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Validator;
 
+
 use Illuminate\Routing\Controller as BaseController;
 
 class PropertyController extends BaseController
@@ -93,8 +94,28 @@ class PropertyController extends BaseController
         return view('backoffice.pages.propertymanagement.tenancies', compact('properties'));
     }
 
-    public function activateNewTenancy()
+    public function activateNewTenancy(Request $request)
     {
+        //validate
+        $rules = array(
+            'property_id' => 'required',
+            'partner_id' => 'required',
+            'start_date' => 'required|before:end_date',
+            'end_date' => 'required',
+            'deposit' => 'required|numeric',
+        );
+
+        $messages = [
+            'property_id.required' => 'The Property field is required',
+            'partner_id.required' => 'Please select the Principal tenant for the tenancy',
+        ];
         
+        $this->validate($request,$rules, $messages);
+        $data = $request->all();
+        $transaction = PropertyService::activateNewTenancy($data);
+       // return $transaction;
+        if($transaction){
+            return redirect()->route('getTenancies')->with('tenancySuccess', 'New Tenancy successfully activated');;
+        }
     }
 }

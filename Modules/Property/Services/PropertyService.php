@@ -5,7 +5,9 @@ namespace Modules\Property\Services;
 use Modules\Property\Entities\Property;
 use Modules\Property\Entities\PropertyCategory;
 use Modules\Property\Entities\PropertyImage;
+use Modules\Property\Entities\PropertyTenancy;
 use JD\Cloudder\Facades\Cloudder;
+use Illuminate\Support\Facades\DB;
 
 class PropertyService
 {
@@ -185,5 +187,26 @@ class PropertyService
     public static function getPropertiesToLet()
     {
         return Property::where('status', 'To Let')->get();
+    }
+
+    public static function activateNewTenancy($data)
+    {
+       
+        try
+        {
+            $exception = DB::transaction(function() use ($data)
+            {
+                PropertyTenancy::create($data);
+                $propertyToUpdate = Property::find($data['property_id']);
+                $propertyToUpdate->status = 'Rented';
+                $propertyToUpdate->save();
+            });
+            return is_null($exception) ? true : $exception;
+        }
+        catch(\Exception $ex)
+        {
+            return $ex->getMessage();
+        }
+        
     }
 }

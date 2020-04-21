@@ -3,7 +3,7 @@
 
 <div class="container ">
     <!-- CARD BEGIN -->
-        <form>
+        <form action="{{route('activateNewTenancy')}}" method="POST">
             <div class="card mt-10">
                 <div class="card-header">
                     <div class="float-left">
@@ -21,7 +21,11 @@
                             <select name="property_id" class="form-control" id="">
                                 <option value="">--Select Property--</option>
                                 @foreach($propertiesToLet as $property)
-                                    <option value="{{ $property->id }}">{{$property->house_number}}, {{$property->street}}, {{$property->city}}. {{$property->postcode}}</option>
+                                    @if (old('property_id') == $property->id)
+                                        <option value="{{ $property->id }}" selected>{{$property->house_number}}, {{$property->street}}, {{$property->city}}. {{$property->postcode}}</option>
+                                    @else
+                                        <option value="{{ $property->id }}">{{$property->house_number}}, {{$property->street}}, {{$property->city}}. {{$property->postcode}}</option>
+                                    @endif
                                 @endforeach   
                             </select>
                             <span class="text-danger"> 
@@ -35,7 +39,11 @@
                             <select name="partner_id" class="form-control" id="">
                                 <option value="">--Select Principal Tenant--</option>
                                 @foreach($partners as $partner)
-                                    <option value="{{ $partner->id }}">{{$partner->first_name}} {{$partner->last_name}}</option>
+                                    @if (old('partner_id') == $partner->id)
+                                        <option value="{{ $partner->id }}" selected>{{$partner->first_name}} {{$partner->last_name}}</option>
+                                    @else
+                                        <option value="{{ $partner->id }}">{{$partner->first_name}} {{$partner->last_name}}</option>
+                                    @endif
                                 @endforeach   
                             </select>
                             <span class="text-danger"> 
@@ -49,7 +57,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="">Start date</label>
-                            <input type="text" class="datepicker form-control" name="start_date">
+                            <input type="text" class="datepicker form-control" name="start_date" value="{{ old('start_date') }}">
                             <span class="text-danger"> 
                                 @if($errors->has('start_date'))
                                     {{ $errors->first('start_date') }}
@@ -58,7 +66,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="">End date</label>
-                            <input type="text" class="datepicker form-control" name="end_date">
+                            <input type="text" class="datepicker form-control" name="end_date" value="{{ old('end_date') }}">
                             <span class="text-danger"> 
                                 @if($errors->has('end_date'))
                                     {{ $errors->first('end_date') }}
@@ -69,10 +77,10 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="">Deposit amount</label>
-                            <input type="text" class="form-control" name="deposit_amount">
+                            <input type="text" class="form-control" name="deposit" value="{{ old('deposit') }}">
                             <span class="text-danger"> 
-                                @if($errors->has('deposit_amount'))
-                                    {{ $errors->first('deposit_amount') }}
+                                @if($errors->has('deposit'))
+                                    {{ $errors->first('deposit') }}
                                 @endif
                             </span>
                         </div>

@@ -32,6 +32,7 @@ Route::group(['prefix' => 'backoffice/property', 'middleware' => ['web','roles']
      Route::post('delete-image', ['uses' => 'PropertyController@deleteImage', 'as' => 'deleteImage']);
      Route::get('tenancies',   ['uses' => 'PropertyController@getTenancies',   'as' => 'getTenancies']);
      Route::get('add-tenancy',   ['uses' => 'PropertyController@addNewTenancy',   'as' => 'addNewTenancy']);
+     Route::post('activate-new-tenancy', ['uses' => 'PropertyController@activateNewTenancy', 'as' => 'activateNewTenancy']);
     // Route::delete('delete',   ['uses' => 'FooController@delete', 'as' => '_fooDelete']);
 
 });
