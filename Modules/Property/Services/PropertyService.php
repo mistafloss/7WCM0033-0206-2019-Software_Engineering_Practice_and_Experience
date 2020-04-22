@@ -209,4 +209,36 @@ class PropertyService
         }
         
     }
+
+    public static function getTenancy($id)
+    {
+        return PropertyTenancy::find($id);
+    }
+
+    public static function updateTenancy($data)
+    {
+        try
+        {
+            $exception = DB::transaction(function() use ($data)
+            {
+                //dd($data);
+                $tenancyToUpdate = self::getTenancy($data['tenancy_id']);
+                $tenancyToUpdate->partner_id = $data['partner_id'];
+                $tenancyToUpdate->end_date = $data['end_date'];
+                $tenancyToUpdate->status = $data['status'];
+                $tenancyToUpdate->save();
+                if($data['status'] == 0)
+                {
+                    $propertyToUpdate = Property::find($data['property_id']);
+                    $propertyToUpdate->status = 'To Let';
+                    $propertyToUpdate->save();
+                }
+            });
+            return is_null($exception) ? true : $exception;
+        }
+        catch(\Exception $ex)
+        {
+            return $ex->getMessage();
+        }
+    }
 }

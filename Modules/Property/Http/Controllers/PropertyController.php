@@ -96,7 +96,6 @@ class PropertyController extends BaseController
 
     public function activateNewTenancy(Request $request)
     {
-        //validate
         $rules = array(
             'property_id' => 'required',
             'partner_id' => 'required',
@@ -113,9 +112,30 @@ class PropertyController extends BaseController
         $this->validate($request,$rules, $messages);
         $data = $request->all();
         $transaction = PropertyService::activateNewTenancy($data);
-       // return $transaction;
         if($transaction){
             return redirect()->route('getTenancies')->with('tenancySuccess', 'New Tenancy successfully activated');;
+        }
+    }
+
+    public function showTenancy($id)
+    {  //rent, end date and tenant are the only fields that are editable
+        $partners = PartnerService::getTenants();
+        $tenancy = PropertyService::getTenancy($id);
+        return view('backoffice.pages.propertymanagement.edit_tenancy', compact('tenancy','partners'));
+    }
+
+    public function updateTenancy(Request $request)
+    {
+        $rules = array(
+            'start_date' => 'before:end_date',
+            'end_date' => 'required',
+        );
+
+        $this->validate($request,$rules);
+        $data = $request->all();
+        $transaction = PropertyService::updateTenancy($data);
+        if($transaction){
+            return redirect()->route('getTenancies')->with('tenancySuccess', 'Tenancy updated');;
         }
     }
 }

@@ -23,6 +23,7 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Property Location</th>
+              <th scope="col">Rent (PCM)</th>
               <th scope="col">Start date</th>
               <th scope="col">End date</th>
               <th scope="col">Status</th>
@@ -36,6 +37,7 @@
                     <tr>
                         <th scope="row">{{$tenancy->id}}</th>
                         <td>{{$property->house_number}}, {{$property->street}}, {{$property->city}}. {{$property->postcode}}</td>
+                        <td>£{{$property->property_price}}</td>
                         <td>{{ \Carbon\Carbon::parse($tenancy->start_date)->format('d/m/Y')}}</td>
                         <td>{{ \Carbon\Carbon::parse($tenancy->end_date)->format('d/m/Y')}}</td>
                         <td>
@@ -45,7 +47,7 @@
                             <span class="badge badge-pill badge-danger"> Expired </span>
                             @endif
                         </td>
-                        <td><a href="" class="btn btn-success"> View </a></td>
+                        <td> <a href="{{route('showTenancy',$tenancy->id)}}" class="btn btn-success"> View </a> </td> 
                     </tr>
                     @endforeach
                 @endif    
