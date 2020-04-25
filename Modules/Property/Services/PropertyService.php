@@ -6,6 +6,7 @@ use Modules\Property\Entities\Property;
 use Modules\Property\Entities\PropertyCategory;
 use Modules\Property\Entities\PropertyImage;
 use Modules\Property\Entities\PropertyTenancy;
+use Modules\Property\Entities\PropertySale;
 use JD\Cloudder\Facades\Cloudder;
 use Illuminate\Support\Facades\DB;
 
@@ -229,9 +230,10 @@ class PropertyService
                 $tenancyToUpdate->save();
                 if($data['status'] == 0)
                 {
-                    $propertyToUpdate = Property::find($data['property_id']);
-                    $propertyToUpdate->status = 'To Let';
-                    $propertyToUpdate->save();
+                    // $propertyToUpdate = Property::find($data['property_id']);
+                    // $propertyToUpdate->status = 'To Let';
+                    // $propertyToUpdate->save();
+                    self::updatePropertyStatus($data['property_id'],'To Let');
                 }
             });
             return is_null($exception) ? true : $exception;
@@ -240,5 +242,39 @@ class PropertyService
         {
             return $ex->getMessage();
         }
+    }
+
+    public static function getPropertiesForSale()
+    {
+        return Property::where('status', 'For Sale')->get();
+    }
+
+    public static function completeSale($data)
+    {
+        try
+        {
+            $exception = DB::transaction(function() use ($data)
+            {
+                PropertySale::create($data);
+                self::updatePropertyStatus($data['property_id'],'Sold');
+            });
+            return is_null($exception) ? true : $exception;
+        }
+        catch(\Exception $ex)
+        {
+            return $ex->getMessage();
+        }
+    }
+
+    private static function updatePropertyStatus($id,$property_status)
+    {
+        $propertyToUpdate = Property::find($id);
+        $propertyToUpdate->status = $property_status;
+        $propertyToUpdate->save();
+    }
+
+    public static function getSale($id)
+    {
+        return PropertySale::find($id);
     }
 }

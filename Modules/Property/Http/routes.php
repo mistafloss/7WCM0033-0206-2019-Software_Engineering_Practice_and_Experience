@@ -34,5 +34,9 @@ Route::group(['prefix' => 'backoffice/property', 'middleware' => ['web','roles']
      Route::get('add-tenancy',   ['uses' => 'PropertyController@addNewTenancy',   'as' => 'addNewTenancy']);
      Route::post('activate-new-tenancy', ['uses' => 'PropertyController@activateNewTenancy', 'as' => 'activateNewTenancy']);
      Route::get('tenancy/show/{id}', ['uses' => 'PropertyController@showTenancy',   'as' => 'showTenancy']);
+     Route::get('sale/show/{id}', ['uses' => 'PropertyController@showSale',   'as' => 'showSale']);
      Route::post('updateTenancy', ['uses' => 'PropertyController@updateTenancy', 'as' => 'updateTenancy']);
+     Route::get('sales',   ['uses' => 'PropertyController@getSales',   'as' => 'getSales']);
+     Route::get('sale', ['uses' => 'PropertyController@addNewSale', 'as' => 'addNewSale']);
+     Route::post('completePropertyPurchase', ['uses' => 'PropertyController@completePropertyPurchase', 'as' => 'completePropertyPurchase']);
 });

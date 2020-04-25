@@ -138,4 +138,52 @@ class PropertyController extends BaseController
             return redirect()->route('getTenancies')->with('tenancySuccess', 'Tenancy updated');;
         }
     }
+
+    public function getSales()
+    {
+        $properties = PropertyService::getAllProperties();
+        return view('backoffice.pages.propertymanagement.sales', compact('properties'));
+    }
+
+    public function addNewSale()
+    {
+        $propertiesForSale = PropertyService::getPropertiesForSale();
+        $buyers = PartnerService::getBuyers();
+        $sellers = PartnerService::getSellers();
+        return view('backoffice.pages.propertymanagement.add_sale', compact('propertiesForSale','buyers','sellers'));
+    }
+
+    public function completePropertyPurchase(Request $request)
+    {
+        //validate 
+        //
+        $rules = array(
+            'property_id' => 'required',
+            'buyer_id' => 'required',
+            'seller_id' => 'required',
+            'date_sold' => 'required',
+        );
+
+        $messages = [
+            'property_id.required' => 'The Property is required',
+            'buyer_id.required' => 'Please select the Property buyer',
+            'seller_id.required' => 'Please select the Property seller',
+        ];
+        
+        $this->validate($request,$rules, $messages);
+        $data = $request->all();
+        $sale = PropertyService::completeSale($data);
+        //dd($sale);
+        if($sale){
+            return redirect()->route('getSales')->with('saleSuccess', 'Property Sale completed');;
+        }
+    }
+
+    public function showSale($id)
+    {
+        $buyers = PartnerService::getBuyers();
+        $sellers = PartnerService::getSellers();
+        $sale = PropertyService::getSale($id);
+        return view('backoffice.pages.propertymanagement.show_sale', compact('buyers','sellers','sale'));
+    }
 }

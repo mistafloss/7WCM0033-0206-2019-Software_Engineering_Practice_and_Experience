@@ -25,4 +25,8 @@ class Property extends Model
         return $this->hasMany(PropertyTenancy::class);
     }
     
+    public function sales()
+    {
+        return $this->hasMany(PropertySale::class);
+    }
 }

@@ -29,7 +29,14 @@ class PartnerService
     {
         return Partner::where('partner_category_id', 3)->get();
     }
-
+    public static function getBuyers()
+    {
+        return Partner::where('partner_category_id', 1)->get();
+    }
+    public static function getSellers()
+    {
+        return Partner::where('partner_category_id', 2)->get();
+    }
     public static function createPartner($data)
     {
         $partner = new Partner();

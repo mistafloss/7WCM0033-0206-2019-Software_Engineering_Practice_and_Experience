@@ -3,11 +3,11 @@
 
 <div class="container ">
     <!-- CARD BEGIN -->
-        <form action="{{route('completePropertyPurchase')}}" method="POST">
+        <form action="" method="POST">
             <div class="card mt-10">
                 <div class="card-header">
                     <div class="float-left">
-                        <h5> Add New Property Sale</h5>
+                        <h5> Property Sale detail</h5>
                     </div>
                     <span class="float-right">
                         <a href="{{route('getSales')}}" class="btn btn-danger"> <i class="far fa-arrow-alt-circle-left"></i>Back to Sales</a>
@@ -16,23 +16,11 @@
                 <div class="card-body">
 
                     <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label for="">Select Property</label>
-                            <select name="property_id" class="form-control" id="">
-                                <option value="">--Select Property--</option>
-                                @foreach($propertiesForSale as $property)
-                                    @if (old('property_id') == $property->id)
-                                        <option value="{{ $property->id }}" selected>{{$property->house_number}}, {{$property->street}}, {{$property->city}}. {{$property->postcode}}</option>
-                                    @else
-                                        <option value="{{ $property->id }}">{{$property->house_number}}, {{$property->street}}, {{$property->city}}. {{$property->postcode}}</option>
-                                    @endif
-                                @endforeach   
-                            </select>
-                            <span class="text-danger"> 
-                                @if($errors->has('property_id'))
-                                    {{ $errors->first('property_id') }}
-                                @endif
-                            </span>
+                        <div class="form-group col-md-6">
+                        <label for=""><strong>Property details</strong></label>
+                           <p> {{$sale->property->house_number}}, {{$sale->property->street}}, 
+                               {{$sale->property->city}}, {{$sale->property->postcode}}.</p>
+                               <p>£{{$sale->property->property_price}}</p>
                         </div>
                     </div>
 
@@ -94,7 +82,7 @@
                 </div>
                 <div class="card-footer">
                     {{csrf_field()}}
-                    <button type="submit" style="width:50%; float:right;" class="btn btn-success" id=""> <i class="far fa-save"></i> Activate Property Purchase </button>
+                    
                 </div>
             </div>
         </form>
