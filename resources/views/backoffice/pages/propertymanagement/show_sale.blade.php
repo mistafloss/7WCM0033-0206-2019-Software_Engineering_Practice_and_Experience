@@ -26,54 +26,19 @@
 
                    <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="">Select Seller</label>
-                            <select name="seller_id" class="form-control" id="">
-                                <option value="">--Select Seller--</option>
-                                @foreach($sellers as $seller)
-                                    @if (old('seller_id') == $seller->id)
-                                        <option value="{{ $seller->id }}" selected>{{$seller->first_name}} {{$seller->last_name}}</option>
-                                    @else
-                                        <option value="{{ $seller->id }}">{{$seller->first_name}} {{$seller->last_name}}</option>
-                                    @endif
-                                @endforeach   
-                            </select>
-                            <span class="text-danger"> 
-                                @if($errors->has('seller_id'))
-                                    {{ $errors->first('seller_id') }}
-                                @endif
-                            </span>
+                            <label for=""><strong>Seller Name</strong></label>
+                            <p>{{$sale->seller->first_name}} {{$sale->seller->last_name}}</p>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="">Select Buyer</label>
-                            <select name="buyer_id" class="form-control" id="">
-                                <option value="">--Select Buyer--</option>
-                                @foreach($buyers as $buyer)
-                                    @if (old('buyer_id') == $buyer->id)
-                                        <option value="{{ $buyer->id }}" selected>{{$buyer->first_name}} {{$buyer->last_name}}</option>
-                                    @else
-                                        <option value="{{ $buyer->id }}">{{$buyer->first_name}} {{$buyer->last_name}}</option>
-                                    @endif
-                                @endforeach   
-                            </select>
-                            <span class="text-danger"> 
-                                @if($errors->has('buyer_id'))
-                                    {{ $errors->first('buyer_id') }}
-                                @endif
-                            </span>
+                            <label for=""><strong>Buyer Name</strong></label>
+                            <p>{{$sale->buyer->first_name}} {{$sale->buyer->last_name}}</p>
                         </div>
                    </div>
 
-                   
-
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="">Date of sale</label>
-                            <input type="text" class="datepicker form-control" name="date_sold" value="{{ old('date_sold') }}">
-                            <span class="text-danger"> 
-                                @if($errors->has('date_sold'))
-                                    {{ $errors->first('date_sold') }}
-                                @endif
-                            </span>
+                            <label for=""><strong>Date of sale</strong></label>
+                            <p>{{ \Carbon\Carbon::parse($sale->date_sold)->format('d/m/Y')}}</p>
                         </div>
                         <div class="form-group col-md-6">
                        
@@ -82,7 +47,7 @@
                 </div>
                 <div class="card-footer">
                     {{csrf_field()}}
-                    
+                    <button type="submit" style="width:50%; float:right;" class="btn btn-success" id=""> <i class="far fa-save"></i> Unlock Property for re-sale</button>
                 </div>
             </div>
         </form>

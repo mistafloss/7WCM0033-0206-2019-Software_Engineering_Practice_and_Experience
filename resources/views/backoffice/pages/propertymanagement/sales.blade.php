@@ -50,14 +50,6 @@
                     @endforeach
                 @endif    
             @endforeach
-            <!-- <tr>
-              <th scope="row">2</th>
-              <td>Nile Road, Southampton. SO32 5AD </td> 
-              <td>120,000</td>
-              <td><span class="badge badge-pill badge-success"> Completed </span></td>
-              <td>20/02/2020</td>
-              <td> <a href="" class="btn btn-primary"> View </a> </td> 
-            </tr> -->
           </tbody>
         </table>
   </div>
