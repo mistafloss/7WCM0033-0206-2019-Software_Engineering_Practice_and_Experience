@@ -222,7 +222,6 @@ class PropertyService
         {
             $exception = DB::transaction(function() use ($data)
             {
-                //dd($data);
                 $tenancyToUpdate = self::getTenancy($data['tenancy_id']);
                 $tenancyToUpdate->partner_id = $data['partner_id'];
                 $tenancyToUpdate->end_date = $data['end_date'];
@@ -230,9 +229,6 @@ class PropertyService
                 $tenancyToUpdate->save();
                 if($data['status'] == 0)
                 {
-                    // $propertyToUpdate = Property::find($data['property_id']);
-                    // $propertyToUpdate->status = 'To Let';
-                    // $propertyToUpdate->save();
                     self::updatePropertyStatus($data['property_id'],'To Let');
                 }
             });
@@ -275,6 +271,29 @@ class PropertyService
 
     public static function getSale($id)
     {
-        return PropertySale::find($id);
+        return PropertySale::withTrashed()->find($id);
+    }
+
+    public static function unlockPropertyForSale($id)
+    {
+        try
+        {
+            $exception = DB::transaction(function() use ($id)
+            {
+                $sale = self::getSale($id);
+                self::updatePropertyStatus($sale->property_id,'For Sale');
+                $sale->delete();
+            });
+            return is_null($exception) ? true : $exception;
+        }
+        catch(\Exception $ex)
+        {
+            return $ex->getMessage();
+        }
+    }
+
+    public static function getSales()
+    {
+        return PropertySale::withTrashed()->get();
     }
 }

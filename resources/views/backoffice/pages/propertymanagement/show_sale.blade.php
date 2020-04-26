@@ -3,9 +3,15 @@
 
 <div class="container ">
     <!-- CARD BEGIN -->
-        <form action="" method="POST">
+        <form action="{{route('unlockPropertyForResale')}}" method="POST">
             <div class="card mt-10">
                 <div class="card-header">
+                    @if(Session::has('saleSuccess'))
+                        <div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            {{Session::get('saleSuccess')}}
+                        </div>
+                    @endif
                     <div class="float-left">
                         <h5> Property Sale detail</h5>
                     </div>
@@ -47,7 +53,11 @@
                 </div>
                 <div class="card-footer">
                     {{csrf_field()}}
-                    <button type="submit" style="width:50%; float:right;" class="btn btn-success" id=""> <i class="far fa-save"></i> Unlock Property for re-sale</button>
+                    <!--if the sale has a deleted_at value then hide this button-->
+                    <input type="hidden" name="sale_id" value="{{$sale->id}}"/>
+                    @if(!$sale->deleted_at)
+                      <button type="submit" style="width:50%; float:right;" class="btn btn-success" id=""> <i class="far fa-save"></i> Unlock Property for re-sale</button>
+                    @endif
                 </div>
             </div>
         </form>

@@ -39,4 +39,5 @@ Route::group(['prefix' => 'backoffice/property', 'middleware' => ['web','roles']
      Route::get('sales',   ['uses' => 'PropertyController@getSales',   'as' => 'getSales']);
      Route::get('sale', ['uses' => 'PropertyController@addNewSale', 'as' => 'addNewSale']);
      Route::post('completePropertyPurchase', ['uses' => 'PropertyController@completePropertyPurchase', 'as' => 'completePropertyPurchase']);
+     Route::post('unlockPropertyForResale', ['uses' => 'PropertyController@unlockPropertyForResale', 'as' => 'unlockPropertyForResale']);
 });

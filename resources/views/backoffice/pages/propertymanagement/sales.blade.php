@@ -30,13 +30,11 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($properties as $property)
-                @if(!empty($property->sales))
-                    @foreach($property->sales as $sale)
+                @foreach($sales as $sale)
                     <tr>
                         <th scope="row">{{$sale->id}}</th>
-                        <td>{{$property->house_number}}, {{$property->street}}, {{$property->city}}. {{$property->postcode}}</td>
-                        <td>£{{$property->property_price}}</td>
+                        <td>{{$sale->property->house_number}}, {{$sale->property->street}}, {{$sale->property->city}}. {{$sale->property->postcode}}</td>
+                        <td>£{{$sale->property->property_price}}</td>
                         <td>
                             @if($sale->status == 1)
                             <span class="badge badge-pill badge-success"> Completed</span>
@@ -47,9 +45,7 @@
                         <td>{{ \Carbon\Carbon::parse($sale->date_sold)->format('d/m/Y')}}</td>
                         <td> <a href="{{route('showSale',$sale->id)}}" class="btn btn-success"> View </a> </td> 
                     </tr>
-                    @endforeach
-                @endif    
-            @endforeach
+                @endforeach
           </tbody>
         </table>
   </div>

@@ -31,7 +31,7 @@
                 </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Event Management</a>
+              <a class="nav-link" href="#">News Management</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('partnerIndex')}}">Partners</a>

@@ -141,8 +141,8 @@ class PropertyController extends BaseController
 
     public function getSales()
     {
-        $properties = PropertyService::getAllProperties();
-        return view('backoffice.pages.propertymanagement.sales', compact('properties'));
+        $sales = PropertyService::getSales();
+        return view('backoffice.pages.propertymanagement.sales', compact('sales'));
     }
 
     public function addNewSale()
@@ -185,5 +185,16 @@ class PropertyController extends BaseController
         $sellers = PartnerService::getSellers();
         $sale = PropertyService::getSale($id);
         return view('backoffice.pages.propertymanagement.show_sale', compact('buyers','sellers','sale'));
+    }
+
+    public function unlockPropertyForResale(Request $request)
+    {
+        //add a deleted_at date to the sale
+        //change the status of the property back to forsale
+        $sale_id = $request->input('sale_id');
+        $propertyUnlock = PropertyService::unlockPropertyForSale($sale_id);
+        if($propertyUnlock){
+            return redirect()->route('showSale',$sale_id)->with('saleSuccess', 'Property has been unlocked for re-sale');
+        }
     }
 }
