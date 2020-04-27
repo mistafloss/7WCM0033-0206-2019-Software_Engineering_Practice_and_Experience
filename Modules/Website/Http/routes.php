@@ -27,7 +27,7 @@ Route::group(['prefix' => 'api', 'middleware' => ['web'], 'namespace' => 'Module
 Route::group(['prefix' => '', 'middleware' => ['web'], 'namespace' => 'Modules\Website\Http\Controllers'], function () {
 
     Route::get('/',   ['uses' => 'WebsiteController@index',   'as' => 'websiteIndex']);
-    Route::get('/property-search',  ['uses' => 'WebsiteController@search', 'as' => 'propertySearch']);
-   
+    Route::get('/property-search',  ['uses' => 'WebsiteController@indexSearchProperty', 'as' => 'indexSearchProperty']);
+    Route::get('/property',  ['uses' => 'WebsiteController@allProperties', 'as' => 'allProperties']);
 
 });

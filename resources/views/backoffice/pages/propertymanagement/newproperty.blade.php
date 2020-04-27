@@ -113,6 +113,13 @@
                         </div>
 
                     </div>
+                    <div class="col">
+                            <div class="form-group">
+                                <label for="">Number of bedrooms</label>
+                                <input type="text" class="form-control" id="noOfBedrooms" name="no_of_bedrooms" placeholder="">
+                                <span class="text-danger" id="numberOfBedrooms_error"> </span>
+                            </div>
+                    </div>
                 </div>
                 <hr/>
                 <!-- ROW END -->

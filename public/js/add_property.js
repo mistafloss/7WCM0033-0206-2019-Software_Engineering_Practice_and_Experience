@@ -137,6 +137,13 @@ $('form#createPropertyForm').submit(function(e){
                 }else{
                     $('#propertyStatus_error').text('');  
                 }
+                
+                var no_of_bedrooms_msg = response.responseJSON.errors.no_of_bedrooms;
+                if(errors.hasOwnProperty('no_of_bedrooms')){
+                    $('#numberOfBedrooms_error').text(no_of_bedrooms_msg);
+                }else{
+                    $('#numberOfBedrooms_error').text('');  
+                }
 
                 var publish_property_msg = response.responseJSON.errors.publish_property;
                 if(errors.hasOwnProperty('publish_property')){

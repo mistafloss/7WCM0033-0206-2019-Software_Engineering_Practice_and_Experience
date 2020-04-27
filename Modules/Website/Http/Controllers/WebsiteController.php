@@ -10,20 +10,19 @@ class WebsiteController extends BaseController
     public function index(Request $request)
     {
         return view('website.pages.index');
-        //return view('website.pages.property');
     }
 
-    public function search(Request $request)
+    public function indexSearchProperty(Request $request)
     {
-        //return $location;
        $location = $request->get('location');
        $intent = $request->get('intent');
-       $properties = WebsiteService::searchProperty($location,$intent);
+       $properties = WebsiteService::indexSearchProperty($location,$intent);
        return view('website.pages.property', compact('properties'));
     }
 
-    public function property(Request $request)
+    public function allProperties(Request $request)
     {
-       return view('website.pages.property');
+        $properties = WebsiteService::getAllProperties();
+        return view('website.pages.property', compact('properties'));
     }
 }

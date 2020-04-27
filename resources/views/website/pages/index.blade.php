@@ -29,10 +29,11 @@
                         </form>
                     </div>
                     <div class="tab-pane fade" id="list-tobuy" role="tabpanel" aria-labelledby="list-tobuy-list">
-                        <form class="">
+                        <form  method="GET" action="{{url('property-search')}}">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <input type="email" class="form-control" id="" placeholder="Type a location or postcode">
+                                    <input type="text" class="form-control" name="location" placeholder="Type a location or postcode">
+                                    <input type="hidden" value="buy" name="intent"/>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <button type="submit" class="btn btn-primary">Search properties to buy</button>
