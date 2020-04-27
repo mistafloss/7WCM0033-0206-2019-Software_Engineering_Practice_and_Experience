@@ -3,6 +3,7 @@
 namespace Modules\Website\Http\Controllers;
 use Illuminate\Http\Request;
 use Modules\Website\Services\WebsiteService;
+use Modules\Property\Services\PropertyService;
 use Illuminate\Routing\Controller as BaseController;
 
 class WebsiteController extends BaseController
@@ -12,17 +13,27 @@ class WebsiteController extends BaseController
         return view('website.pages.index');
     }
 
-    public function indexSearchProperty(Request $request)
+    public function searchProperty(Request $request)
     {
        $location = $request->get('location');
        $intent = $request->get('intent');
-       $properties = WebsiteService::indexSearchProperty($location,$intent);
-       return view('website.pages.property', compact('properties'));
+       $type = $request->get('type');
+       $bedrooms = $request->get('bedrooms');
+       $propertyCategories = PropertyService::getAllCategories();
+       $properties = WebsiteService::searchProperty($location,$intent,$bedrooms,$type);
+       return view('website.pages.property', compact('properties','propertyCategories'));
     }
 
     public function allProperties(Request $request)
     {
         $properties = WebsiteService::getAllProperties();
-        return view('website.pages.property', compact('properties'));
+        $propertyCategories = PropertyService::getAllCategories();
+        return view('website.pages.property', compact('properties','propertyCategories'));
+    }
+
+    public function allPropertySearch(Request $request)
+    {
+        $location = $request->get('location');
+        $intent = $request->get('intent');
     }
 }

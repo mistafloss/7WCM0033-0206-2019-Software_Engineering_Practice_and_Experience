@@ -6,8 +6,13 @@
         <div class="row">
             <div class="col-4">
                 <div class="list-group list-group-horizontal-md" id="list-tab" role="tablist">
+                    @if(app('request')->input('intent') == 'rent' || app('request')->input('intent') == 'buy')
+                    <a class="list-group-item list-group-item-action {{ app('request')->input('intent') == 'rent' ? 'active' : '' }}" id="list-torent-list" data-toggle="list" href="#list-torent" role="tab" aria-controls="home">Rent</a>
+                    <a class="list-group-item list-group-item-action {{ app('request')->input('intent') == 'buy' ? 'active' : '' }}" id="list-tobuy-list" data-toggle="list" href="#list-tobuy" role="tab" aria-controls="profile">Buy</a>
+                    @else
                     <a class="list-group-item list-group-item-action active" id="list-torent-list" data-toggle="list" href="#list-torent" role="tab" aria-controls="home">Rent</a>
                     <a class="list-group-item list-group-item-action" id="list-tobuy-list" data-toggle="list" href="#list-tobuy" role="tab" aria-controls="profile">Buy</a>
+                    @endif
                 </div>
             </div>
             <div class="col-8">
@@ -20,24 +25,24 @@
                                     
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <select class="form-control">
-                                        <option value=""> Type</option>
-                                        <option></option>
-                                        <option></option>
+                                    <select class="form-control" name="type">
+                                        <option value="all"> Type</option>
+                                        @foreach($propertyCategories as $category)
+                                            <option value="{{$category->id}}" {{ app('request')->input('type') == $category->id ? 'selected' : ''}}>{{$category->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group col-md-2">
-                                    <select class="form-control">
-                                        <option value=""> Any Price</option>
-                                        <option></option>
-                                        <option></option>
-                                    </select>
-                                </div>
+                             
                                 <div class="form-group col-md-3">
-                                    <select class="form-control">
-                                        <option value=""> Any Bedrooms</option>
-                                        <option></option>
-                                        <option></option>
+                                    <select class="form-control" name="bedrooms">
+                                        <option value="all"> Any Bedrooms</option>
+                                        <option value="1" {{ app('request')->input('bedrooms') == '1' ? 'selected' : ''}}>1</option>
+                                        <option value="2" {{ app('request')->input('bedrooms') == '2' ? 'selected' : ''}}>2</option>
+                                        <option value="3" {{ app('request')->input('bedrooms') == '3' ? 'selected' : ''}}>3</option>
+                                        <option value="4" {{ app('request')->input('bedrooms') == '4' ? 'selected' : ''}}>4</option>
+                                        <option value="5" {{ app('request')->input('bedrooms') == '5' ? 'selected' : ''}}>5</option>
+                                        <option value="6" {{ app('request')->input('bedrooms') == '6' ? 'selected' : ''}}>6</option>
+                                        <option value="7" {{ app('request')->input('bedrooms') == '7' ? 'selected' : ''}}>7</option>
                                     </select>
                                 </div>
                                 <div class="form-group col">
@@ -47,41 +52,43 @@
                             </div>
                         </form>
                     </div>
-                    <div class="tab-pane fade" id="list-tobuy" role="tabpanel" aria-labelledby="list-tobuy-list">
-                    <div class="form-row">
-                                <div class="form-group col-md-3">
-                                    <input type="text" class="form-control" name="location" placeholder="Location or postcode">
-                                    
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <select class="form-control">
-                                        <option value=""> Type</option>
-                                        <option></option>
-                                        <option></option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <select class="form-control">
-                                        <option value=""> Any Price</option>
-                                        <option></option>
-                                        <option></option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <select class="form-control">
-                                        <option value=""> Any Bedrooms</option>
-                                        <option></option>
-                                        <option></option>
-                                    </select>
-                                </div>
-                                <div class="form-group col">
-                                    <input type="hidden" value="buy" name="intent"/>
-                                    <button type="submit" class="btn btn-primary">Search</button>
-                                </div>
+                    <div class="tab-pane fade " id="list-tobuy" role="tabpanel" aria-labelledby="list-tobuy-list">
+                        <form method="GET" action="{{url('property-search')}}">
+                            <div class="form-row">
+                                        <div class="form-group col-md-3">
+                                            <input type="text" class="form-control" name="location" placeholder="Location or postcode">
+                                            
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <select class="form-control" name="type">
+                                                <option value="all"> Type</option>
+                                                @foreach($propertyCategories as $category)
+                                                    <option value="{{$category->id}}" {{ app('request')->input('type') == $category->id ? 'selected' : ''}}>{{$category->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <select class="form-control" name="bedrooms">
+                                                <option value="all"> Any Bedrooms</option>
+                                                <option value="1" {{ app('request')->input('bedrooms') == '1' ? 'selected' : ''}}>1</option>
+                                                <option value="2" {{ app('request')->input('bedrooms') == '2' ? 'selected' : ''}}>2</option>
+                                                <option value="3" {{ app('request')->input('bedrooms') == '3' ? 'selected' : ''}}>3</option>
+                                                <option value="4" {{ app('request')->input('bedrooms') == '4' ? 'selected' : ''}}>4</option>
+                                                <option value="5" {{ app('request')->input('bedrooms') == '5' ? 'selected' : ''}}>5</option>
+                                                <option value="6" {{ app('request')->input('bedrooms') == '6' ? 'selected' : ''}}>6</option>
+                                                <option value="7" {{ app('request')->input('bedrooms') == '7' ? 'selected' : ''}}>7</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col">
+                                            <input type="hidden" value="buy" name="intent"/>
+                                            <button type="submit" class="btn btn-primary">Search</button>
+                                        </div>
+                                    </div>
                             </div>
+                        </form>
                     </div>
-                </div>
-            </div>
+                
+            </div>    
         </div>
     
     @if($properties->count() > 0)

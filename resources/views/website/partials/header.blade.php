@@ -10,16 +10,10 @@
         <a class="nav-link" href="#">Landlords</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Tenants</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="#">Sellers</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Buyers</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Properties</a>
+        <a class="nav-link" href="{{route('allProperties')}}">Properties</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Services</a>

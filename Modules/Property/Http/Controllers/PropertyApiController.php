@@ -83,12 +83,14 @@ class PropertyApiController extends BaseController
             'property_status' => 'required',
             'publish_property' => 'required',
             'property_images' => 'required',
+            'no_of_bedrooms' => 'required',
             'property_images.*' => 'mimes:png,gif,jpeg,jpg'
         );
 
          $messages = [
              'property_category_id.required' => 'The property type field is required',
-             'property_images.required' => 'Please upload at least one image for the property'
+             'property_images.required' => 'Please upload at least one image for the property',
+             'no_of_bedrooms.required' => 'Please select the number of bedrooms'
             ];
          $this->validate($request,$rules, $messages);
          $data = $request->all();

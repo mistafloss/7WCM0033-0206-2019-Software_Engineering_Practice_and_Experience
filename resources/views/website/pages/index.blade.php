@@ -21,6 +21,8 @@
                                 <div class="form-group col-md-6">
                                     <input type="text" class="form-control" name="location" placeholder="Type a location or postcode">
                                     <input type="hidden" value="rent" name="intent"/>
+                                    <input type="hidden" value="all" name="type"/>
+                                    <input type="hidden" value="all" name="bedrooms"/>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <button type="submit" class="btn btn-primary">Search properties to rent</button>
@@ -34,6 +36,8 @@
                                 <div class="form-group col-md-6">
                                     <input type="text" class="form-control" name="location" placeholder="Type a location or postcode">
                                     <input type="hidden" value="buy" name="intent"/>
+                                    <input type="hidden" value="all" name="type"/>
+                                    <input type="hidden" value="all" name="bedrooms"/>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <button type="submit" class="btn btn-primary">Search properties to buy</button>

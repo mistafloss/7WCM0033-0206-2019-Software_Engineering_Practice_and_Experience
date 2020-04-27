@@ -58,11 +58,13 @@ class PropertyController extends BaseController
             'property_price' => 'required|numeric',
             'property_status' => 'required',
             'publish_property' => 'required',
-            'property_images.*' => 'mimes:png,gif,jpeg,jpg'
+            'property_images.*' => 'mimes:png,gif,jpeg,jpg',
+            'no_of_bedrooms' => 'required'
         );
      
         $messages = [
             'property_category_id.required' => 'The property type field is required',
+            'no_of_bedrooms.required' => 'Please select the number of bedrooms'
         ];
 
         $this->validate($request,$rules, $messages);

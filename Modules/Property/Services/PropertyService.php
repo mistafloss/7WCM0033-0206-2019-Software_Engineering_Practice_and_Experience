@@ -66,9 +66,10 @@ class PropertyService
             $property->property_category_id = $data['property_category_id'];
             $property->status = $data['property_status'];
             $property->property_price = $data['property_price'];
-            if($data['property_price'] == 'For Sale'){
+            $property->no_of_bedrooms = $data['no_of_bedrooms'];
+            if($data['property_status'] == 'For Sale'){
                 $property->payment_frequency = "Once";
-            }elseif($data['property_price'] == 'To Let'){
+            }elseif($data['property_status'] == 'To Let'){
                 $property->payment_frequency = "Monthly";
             }
             $property->visibility = $data['publish_property'];
@@ -141,9 +142,10 @@ class PropertyService
             $property->property_category_id = $data['property_category_id'];
             $property->status = $data['property_status'];
             $property->property_price = $data['property_price'];
-            if($data['property_price'] == 'For Sale'){
+            $property->no_of_bedrooms = $data['no_of_bedrooms'];
+            if($data['property_status'] == 'For Sale'){
                 $property->payment_frequency = "Once";
-            }elseif($data['property_price'] == 'To Let'){
+            }elseif($data['property_status'] == 'To Let'){
                 $property->payment_frequency = "Monthly";
             }
             $property->visibility = $data['publish_property'];

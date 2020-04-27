@@ -116,7 +116,16 @@
                     <div class="col">
                             <div class="form-group">
                                 <label for="">Number of bedrooms</label>
-                                <input type="text" class="form-control" id="noOfBedrooms" name="no_of_bedrooms" placeholder="">
+                                <select class="form-control" name="no_of_bedrooms" id="noOfBedrooms">
+                                    <option value="">--Select--<option>
+                                    <option value="1">1<option>
+                                    <option value="2">2<option>
+                                    <option value="3">3<option>
+                                    <option value="4">4<option>
+                                    <option value="5">5<option>
+                                    <option value="6">6<option>
+                                    <option value="7">7<option> 
+                                </select>
                                 <span class="text-danger" id="numberOfBedrooms_error"> </span>
                             </div>
                     </div>

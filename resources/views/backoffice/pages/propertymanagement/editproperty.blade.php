@@ -148,6 +148,22 @@
                         </div>
 
                     </div>
+
+                    <div class="col">
+                            <div class="form-group">
+                                <label for="">Number of bedrooms</label>
+                                <select class="form-control" name="no_of_bedrooms" id="noOfBedrooms">
+                                    <option value="1" {{ $property->no_of_bedrooms == 1 ? 'selected' : '' }}>1<option>
+                                    <option value="2" {{ $property->no_of_bedrooms == 2 ? 'selected' : '' }}>2<option>
+                                    <option value="3" {{ $property->no_of_bedrooms == 3 ? 'selected' : '' }}>3<option>
+                                    <option value="4" {{ $property->no_of_bedrooms == 4 ? 'selected' : '' }}>4<option>
+                                    <option value="5" {{ $property->no_of_bedrooms == 5 ? 'selected' : '' }}>5<option>
+                                    <option value="6" {{ $property->no_of_bedrooms == 6 ? 'selected' : '' }}>6<option>
+                                    <option value="7" {{ $property->no_of_bedrooms == 7 ? 'selected' : '' }}>7<option> 
+                                </select>
+                                <span class="text-danger" id="numberOfBedrooms_error"> </span>
+                            </div>
+                    </div>
                 </div>
                 <hr/>
                 <!-- ROW END -->
@@ -156,12 +172,6 @@
                 <div class="row">
                     <div class="col">
                         <label for="">Uploaded Property Images</label><br/>
-                            <!-- @if(Session::has('imageDeleteSuccess'))
-                                <div class="alert alert-success">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                    {{Session::get('imageDeleteSuccess')}}
-                                </div>
-                            @endif -->
                         @foreach($property->images as $image)
                             <img src="{{$image->image_url}}"  width="150px;" height="100px">
                             <a class="btn btn-danger" data-imageid="{{$image->id}}" href="#" class="" data-toggle="modal" data-target="#deleteImageModal"><i class="far fa-trash-alt"></i></a>
