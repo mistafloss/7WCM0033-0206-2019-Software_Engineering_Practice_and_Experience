@@ -103,6 +103,13 @@ $('form#createPropertyForm').submit(function(e){
                     $('#postcode_error').text('');  
                 }
 
+                var brief_description_msg = response.responseJSON.errors.brief_description;
+                if(errors.hasOwnProperty('brief_description')){
+                    $('#briefDescription_error').text(brief_description_msg);
+                }else{
+                    $('#briefDescription_error').text('');  
+                }
+
                 var property_features_msg = response.responseJSON.errors.property_features;
                 if(errors.hasOwnProperty('property_features')){
                     $('#propertyFeatures_error').text(property_features_msg);

@@ -33,9 +33,9 @@ class WebsiteController extends BaseController
         return view('website.pages.property', compact('properties','propertyCategories'));
     }
 
-    public function allPropertySearch(Request $request)
+    public function propertyDetails($id)
     {
-        $location = $request->get('location');
-        $intent = $request->get('intent');
+        $property = WebsiteService::getProperty($id);
+        return view('website.pages.property_details', compact('property'));
     }
 }

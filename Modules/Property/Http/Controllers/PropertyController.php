@@ -52,6 +52,7 @@ class PropertyController extends BaseController
             'street' => 'required',
             'city' => 'required',
             'postcode' => 'required',
+            'brief_description' => 'required',
             'property_features' => 'required',
             'property_description' => 'required',
             'property_category_id' => 'required',

@@ -108,7 +108,7 @@
                         <h5 class="card-title">  {{$property->listing_title}}</h5>
                            <div class="container"> 
                                 <p class="card-text">
-                                  {!!$property->description!!}
+                                  {!! ($property->brief_description)!!}
                                 </p>
                             </div>
                         </p>
@@ -118,7 +118,7 @@
                 <div class="col-sm-2">
                     <div class="row mr-1">
                         <div class="col-md-12 mb-2 mt-2">
-                            <a href="#" class="btn btn-success btn-block">More Information</a>
+                            <a href="{{route('propertyDetails',$property->id)}}" class="btn btn-success btn-block">More Information</a>
                         </div>
                     </div>
                     <div class="row mr-1">

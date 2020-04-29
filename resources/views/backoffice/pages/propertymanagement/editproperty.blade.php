@@ -72,6 +72,15 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
+                                <label for="">Brief description</label>
+                                <textarea class="form-control tiny-textarea" id="briefDescription" name="brief_description" rows="4">{{$property->brief_description}}</textarea>
+                                <span class="text-danger"> 
+                                    @if($errors->has('brief_description'))
+                                        {{ $errors->first('brief_description') }}
+                                    @endif
+                                </span>
+                            </div>
+                            <div class="form-group">
                                 <label for="">Features</label>
                                 <textarea class="form-control tiny-textarea" id="propertyFeatures" name="property_features" rows="4">{{$property->features}}</textarea>
                                 <span class="text-danger"> 

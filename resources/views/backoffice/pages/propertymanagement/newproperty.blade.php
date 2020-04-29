@@ -52,6 +52,11 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
+                                <label for="">Brief Description</label>
+                                <textarea class="form-control tiny-textarea" id="briefDescription" name="brief_description" rows="4"></textarea>
+                                <span class="text-danger" id="briefDescription_error"> </span>
+                            </div>
+                            <div class="form-group">
                                 <label for="">Features</label>
                                 <textarea class="form-control tiny-textarea" id="propertyFeatures" name="property_features" rows="4"></textarea>
                                 <span class="text-danger" id="propertyFeatures_error"> </span>

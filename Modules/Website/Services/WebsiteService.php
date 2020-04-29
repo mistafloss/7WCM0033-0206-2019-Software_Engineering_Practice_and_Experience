@@ -48,4 +48,9 @@ class WebsiteService
  {
      return Property::all();
  }
+
+ public static function getProperty($id)
+ {
+     return Property::find($id);
+ }
 }

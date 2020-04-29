@@ -61,6 +61,7 @@ class PropertyService
             $property->city = $data['city'];
             $property->postcode = $data['postcode'];
             $property->country = $data['country'];
+            $property->brief_description = $data['brief_description'];
             $property->features = $data['property_features'];
             $property->description = $data['property_description'];
             $property->property_category_id = $data['property_category_id'];
@@ -137,6 +138,7 @@ class PropertyService
             $property->city = $data['city'];
             $property->postcode = $data['postcode'];
             $property->country = $data['country'];
+            $property->brief_description = $data['brief_description'];
             $property->features = $data['property_features'];
             $property->description = $data['property_description'];
             $property->property_category_id = $data['property_category_id'];

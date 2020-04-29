@@ -77,6 +77,7 @@ class PropertyApiController extends BaseController
             'city' => 'required',
             'postcode' => 'required',
             'property_features' => 'required',
+            'brief_description' => 'required',
             'property_description' => 'required',
             'property_category_id' => 'required',
             'property_price' => 'required|numeric',
