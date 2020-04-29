@@ -16,43 +16,31 @@ class WebsiteService
          $property_status = 'For Sale';
      }
      
-     if($bedrooms != 'all' || $type == 'all'){
-            $properties =  DB::table('properties')
-            ->where('city', '=', $location)
-            ->orWhere('postcode', 'like', $location.'%')
-            ->where('status', '=', $property_status)
-            ->where('no_of_bedrooms', '=', $bedrooms)
-            ->get();
+     $query = Property::with('images')
+                ->where('city', '=', $location)
+                ->where('status', '=', $property_status);
+    
+     if($bedrooms != 'all' && $type == 'all'){
+            $properties =  $query->where('no_of_bedrooms', '=', $bedrooms)
+                            ->orWhere('postcode', 'like', $location.'%')
+                            ->get();
      }
-     elseif($bedrooms == 'all' || $type != 'all')
+     elseif($bedrooms == 'all' && $type != 'all')
      {
-        $properties =  DB::table('properties')
-            ->where('city', '=', $location)
-            ->orWhere('postcode', 'like', $location.'%')
-            ->where('status', '=', $property_status)
-            ->where('property_category_id', '=', $type)
-            ->get();
-     }elseif($bedrooms != 'all' || $type != 'all')
+            $properties = $query->where('property_category_id', '=', $type)
+                            ->orWhere('postcode', 'like', $location.'%')
+                            ->get();
+
+     }elseif($bedrooms != 'all' && $type != 'all')
      {
-        $properties =  DB::table('properties')
-        ->where('city', '=', $location)
-        ->orWhere('postcode', 'like', $location.'%')
-        ->where('status', '=', $property_status)
-        ->where('property_category_id', '=', $type)
-        ->where('no_of_bedrooms', '=', $bedrooms)
-        ->get();
+            $properties = $query->where('property_category_id', '=', $type)
+                            ->where('no_of_bedrooms', '=', $bedrooms)
+                            ->orWhere('postcode', 'like', $location.'%')
+                            ->get();
      }
      else{
-        $properties =  DB::table('properties')
-        ->where('city', '=', $location)
-        ->orWhere('postcode', 'like', $location.'%')
-        ->where('status', '=', $property_status)
-        ->get();
+            $properties = $query->orWhere('postcode', 'like', $location.'%')->get();
      }
-     
-     
-     
-    
      return $properties;
  }
 

@@ -21,6 +21,8 @@ class WebsiteController extends BaseController
        $bedrooms = $request->get('bedrooms');
        $propertyCategories = PropertyService::getAllCategories();
        $properties = WebsiteService::searchProperty($location,$intent,$bedrooms,$type);
+       //dd($properties);
+      // die;
        return view('website.pages.property', compact('properties','propertyCategories'));
     }
 

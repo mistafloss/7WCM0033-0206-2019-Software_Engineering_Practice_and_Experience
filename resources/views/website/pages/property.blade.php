@@ -10,14 +10,14 @@
                     <a class="list-group-item list-group-item-action {{ app('request')->input('intent') == 'rent' ? 'active' : '' }}" id="list-torent-list" data-toggle="list" href="#list-torent" role="tab" aria-controls="home">Rent</a>
                     <a class="list-group-item list-group-item-action {{ app('request')->input('intent') == 'buy' ? 'active' : '' }}" id="list-tobuy-list" data-toggle="list" href="#list-tobuy" role="tab" aria-controls="profile">Buy</a>
                     @else
-                    <a class="list-group-item list-group-item-action active" id="list-torent-list" data-toggle="list" href="#list-torent" role="tab" aria-controls="home">Rent</a>
+                    <a class="list-group-item list-group-item-action" id="list-torent-list" data-toggle="list" href="#list-torent" role="tab" aria-controls="home">Rent</a>
                     <a class="list-group-item list-group-item-action" id="list-tobuy-list" data-toggle="list" href="#list-tobuy" role="tab" aria-controls="profile">Buy</a>
                     @endif
                 </div>
             </div>
             <div class="col-8">
                 <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="list-torent" role="tabpanel" aria-labelledby="list-torent-list">
+                    <div class="tab-pane fade  {{ app('request')->input('intent') == 'rent' ? 'active show' : '' }}" id="list-torent" role="tabpanel" aria-labelledby="list-torent-list">
                         <form method="GET" action="{{url('property-search')}}">
                             <div class="form-row">
                                 <div class="form-group col-md-3">
@@ -52,7 +52,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="tab-pane fade " id="list-tobuy" role="tabpanel" aria-labelledby="list-tobuy-list">
+                    <div class="tab-pane fade {{ app('request')->input('intent') == 'buy' ? 'active show' : '' }}" id="list-tobuy" role="tabpanel" aria-labelledby="list-tobuy-list">
                         <form method="GET" action="{{url('property-search')}}">
                             <div class="form-row">
                                         <div class="form-group col-md-3">
@@ -96,13 +96,23 @@
         <div class="card mb-2" style="">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                <img src="..." class="card-img" alt="...">
+                @foreach($property->images as $image)
+                    @if ($loop->first)
+                            <img src="{{$image->image_url}}" class="card-img" alt="...">
+                        @break
+                    @endif    
+                @endforeach
                 </div>
                 <div class="col-md-6">
                     <div class="card-body">
                         <h5 class="card-title">  {{$property->listing_title}}</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                           <div class="container"> 
+                                <p class="card-text">
+                                  {!!$property->description!!}
+                                </p>
+                            </div>
+                        </p>
+                        <p class="card-text"><small class="text-muted"></small></p>
                     </div>
                 </div>
                 <div class="col-sm-2">

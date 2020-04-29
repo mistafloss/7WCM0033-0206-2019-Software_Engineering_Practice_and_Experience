@@ -168,6 +168,7 @@ return [
          * Package Service Providers...
          */
         JD\Cloudder\CloudderServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
