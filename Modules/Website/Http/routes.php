@@ -29,4 +29,7 @@ Route::group(['prefix' => '', 'middleware' => ['web'], 'namespace' => 'Modules\W
     Route::get('/property-search',  ['uses' => 'WebsiteController@searchProperty', 'as' => 'searchProperty']);
     Route::get('/property',  ['uses' => 'WebsiteController@allProperties', 'as' => 'allProperties']);
     Route::get('/property/{id}',  ['uses' => 'WebsiteController@propertyDetails', 'as' => 'propertyDetails']);
+    Route::get('/property/{status}/{id}/book-viewing',  ['uses' => 'WebsiteController@bookViewing', 'as' => 'bookViewing']);
+    Route::get('/property/{status}/{id}/request-details',  ['uses' => 'WebsiteController@requestPropertyInformation', 'as' => 'requestPropertyInformation']);
+    Route::post('/book-appointment', ['uses' => 'WebsiteController@bookPropertyAppointment', 'as' => 'bookPropertyAppointment']);
 });

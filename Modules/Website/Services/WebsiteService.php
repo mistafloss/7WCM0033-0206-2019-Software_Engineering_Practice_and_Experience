@@ -3,6 +3,7 @@
 namespace Modules\Website\Services;
 
 use Modules\Property\Entities\Property;
+use Modules\Website\Entities\PropertyAppointment;
 use Illuminate\Support\Facades\DB;
 
 class WebsiteService
@@ -52,5 +53,17 @@ class WebsiteService
  public static function getProperty($id)
  {
      return Property::find($id);
+ }
+  
+ public static function createPropertyAppointment($data)
+ {
+    try
+    {
+        return PropertyAppointment::create($data);
+    }
+    catch(\Exception $ex)
+    {
+        return $ex->getMessage();
+    }
  }
 }

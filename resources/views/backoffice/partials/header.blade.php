@@ -31,14 +31,21 @@
                 </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">News Management</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="{{route('partnerIndex')}}">Partners</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Content Management</a>
-            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarContentMgtDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Content Management
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarContentMgtDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Testimonials</a>
+                  <a class="dropdown-item" href="#">News</a>
+                  <a class="dropdown-item" href="#">Services</a>
+                  <a class="dropdown-item" href="#">Fees</a>
+                  <a class="dropdown-item" href="#">Sellers</a>
+                  <a class="dropdown-item" href="#">Landlords</a>
+              </div>
+           </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('usermanagementIndex')}}">User Management</a>
             </li>

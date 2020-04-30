@@ -47,6 +47,15 @@
                 </p>
             </div>
             <div class="col">
+                        @if($property->status == 'To Let')
+                            @php
+                                $bookviewingSlug = 'to-rent'
+                            @endphp
+                        @elseif($property->status == 'For Sale')
+                            @php
+                                $bookviewingSlug = 'for-sale'
+                            @endphp
+                        @endif
                     <div class="row mr-1">
                         <div class="col-md-12 mb-2">
                             <a href="#" class="btn btn-primary btn-block">Request details</a>
@@ -54,7 +63,7 @@
                     </div>
                     <div class="row mr-1">
                         <div class="col-md-12">
-                            <a href="#" class="btn btn-success btn-block">Book viewing</a>
+                            <a href="{{route('bookViewing',[$bookviewingSlug,$property->id])}}" class="btn btn-success btn-block">Book viewing</a>
                         </div>
                     </div>
             </div>
