@@ -13,6 +13,7 @@ Route::group(['prefix' => 'api', 'middleware' => ['web','roles'], 'roles' => ['D
     Route::post('property/update',      ['uses' => 'PropertyApiController@updateProperty', 'as' => 'API_editProperty']);
     Route::get('property-category/show/{id}',      ['uses' => 'PropertyApiController@viewPropertyCategory',   'as' => 'API_viewPropertyCategory']);
     Route::post('create/property',   ['uses' => 'PropertyApiController@createProperty', 'as' => 'API_createProperty']);
+    Route::post('add-view-appt-note', ['uses' => 'PropertyApiController@addViewAppointmentNote', 'as' => 'API_addViewAppointmentNote']);
     /*
         For filtering, use Query parameters
         /foo?id=someId&role=someRole
@@ -40,4 +41,7 @@ Route::group(['prefix' => 'backoffice/property', 'middleware' => ['web','roles']
      Route::get('sale', ['uses' => 'PropertyController@addNewSale', 'as' => 'addNewSale']);
      Route::post('completePropertyPurchase', ['uses' => 'PropertyController@completePropertyPurchase', 'as' => 'completePropertyPurchase']);
      Route::post('unlockPropertyForResale', ['uses' => 'PropertyController@unlockPropertyForResale', 'as' => 'unlockPropertyForResale']);
+     Route::get('viewing-appointments', ['uses' => 'PropertyController@getAppointments', 'as' => 'getAppointments']);
+     Route::get('viewing-appointment/{id}', ['uses' => 'PropertyController@getAppointmentDetails', 'as' => 'getAppointmentDetails']);
+     Route::post('change-appointment-status', ['uses' => 'PropertyController@changeAppointmentStatus', 'as' => 'changeAppointmentStatus']);
 });

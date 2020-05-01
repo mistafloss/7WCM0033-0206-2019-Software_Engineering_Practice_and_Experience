@@ -7,6 +7,8 @@ use Modules\Property\Entities\PropertyCategory;
 use Modules\Property\Entities\PropertyImage;
 use Modules\Property\Entities\PropertyTenancy;
 use Modules\Property\Entities\PropertySale;
+use Modules\Property\Entities\PropertyAppointment;
+use Modules\Property\Entities\PropertyAppointmentNote;
 use JD\Cloudder\Facades\Cloudder;
 use Illuminate\Support\Facades\DB;
 
@@ -299,5 +301,47 @@ class PropertyService
     public static function getSales()
     {
         return PropertySale::withTrashed()->get();
+    }
+
+    public static function getAppointments()
+    {
+        return PropertyAppointment::all();
+    }
+
+    public static function getAppointment($id)
+    {
+        return PropertyAppointment::find($id);
+    }
+
+    public static function createViewAppointmentNote($data)
+    {
+        try
+        {
+            return PropertyAppointmentNote::create($data);
+        }
+        catch(\Exception $ex)
+        {
+            return $ex->getMessage();
+        }
+    }
+
+    public static function getAppointmentNotes($id)
+    {
+        return PropertyAppointmentNote::where('property_appointment_id', $id)->get();
+    }
+
+    public static function changeAppointmentStatus($data)
+    {
+        try
+        {
+            $appointment = self::getAppointment($data['id']);
+            $appointment->status = $data['status'];
+            return $appointment->save();
+        }  
+        catch(\Exception $ex)
+        {
+            return $ex->getMessage();
+        }
+       
     }
 }

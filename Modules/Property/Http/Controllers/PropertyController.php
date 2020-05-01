@@ -200,4 +200,26 @@ class PropertyController extends BaseController
             return redirect()->route('showSale',$sale_id)->with('saleSuccess', 'Property has been unlocked for re-sale');
         }
     }
+
+    public function getAppointments()
+    {
+        $appointments = PropertyService::getAppointments();
+        return view('backoffice.pages.propertymanagement.viewing_appointments', compact('appointments'));
+    }
+
+    public function getAppointmentDetails($id)
+    {
+        $appointment = PropertyService::getAppointment($id);
+        $notes = PropertyService::getAppointmentNotes($id); 
+        return view('backoffice.pages.propertymanagement.view_appointment_detail', compact('appointment', 'notes'));
+    }
+
+    public function changeAppointmentStatus(Request $request)
+    {
+        $data = $request->all();
+        $apptStatusChange = PropertyService::changeAppointmentStatus($data);
+        if($apptStatusChange){
+            return redirect()->route('getAppointmentDetails',['id' => $data['id']])->with('apptUpdateSuccess', 'Appointment details updated');;
+        }
+    }
 }

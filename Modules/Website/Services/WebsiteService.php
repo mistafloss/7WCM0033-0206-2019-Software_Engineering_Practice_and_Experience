@@ -3,7 +3,7 @@
 namespace Modules\Website\Services;
 
 use Modules\Property\Entities\Property;
-use Modules\Website\Entities\PropertyAppointment;
+use Modules\Property\Entities\PropertyAppointment;
 use Illuminate\Support\Facades\DB;
 
 class WebsiteService

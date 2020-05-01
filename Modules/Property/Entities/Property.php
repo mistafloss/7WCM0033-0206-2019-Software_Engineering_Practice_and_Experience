@@ -30,4 +30,9 @@ class Property extends Model
     {
         return $this->hasMany(PropertySale::class);
     }
+
+    public function appointments()
+    {
+        return $this->hasMany(PropertyAppointment::class);
+    }
 }

@@ -101,18 +101,19 @@ class PropertyApiController extends BaseController
     
 
     /**
-     * Delete a Foo object
+     * Add Property Viewing Appointment note
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function delete(Request $request)
+    public function addViewAppointmentNote(Request $request)
     {
-        $object_id = $request->get('foo_id');
-
-        $object = Foo::find($object_id);
-
-        $object->delete();
-
-         return response()->json(['success' => true, 'data' => $object]);
+        $rules = array(
+            'note' => 'required',
+        );
+      
+        $this->validate( $request , $rules);
+        $data = $request->all();
+        $note = PropertyService::createViewAppointmentNote($data);
+        return response()->json(['success' => true, 'data' => $note]);
     }
 }
