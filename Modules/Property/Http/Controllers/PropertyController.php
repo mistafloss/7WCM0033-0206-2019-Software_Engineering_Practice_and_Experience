@@ -240,7 +240,28 @@ class PropertyController extends BaseController
         $data = $request->all();
         $enqiryStatusChange = PropertyService::changeEnquiryStatus($data);
         if($enqiryStatusChange){
-            return redirect()->route('getEnquiryDetails',['id' => $data['id']])->with('enquiryUpdateSuccess', 'Property enquiry updated.');;
+            return redirect()->route('getEnquiryDetails',['id' => $data['id']])->with('enquiryUpdateSuccess', 'Property enquiry updated.');
+        }
+    }
+
+    public function getValuationAppointments()
+    {
+        $appointments = PropertyService::getValuationAppointments();
+        return view('backoffice.pages.propertymanagement.property_valuation_appointments', compact('appointments'));
+    }
+
+    public function getValuationEnquiryDetails($id)
+    {
+        $appointment = PropertyService::getValuationEnquiryDetails($id);
+        return view('backoffice.pages.propertymanagement.valuation_appointment_details', compact('appointment'));
+    }
+
+    public function changeValuationStatus(Request $request)
+    {
+        $data = $request->all();
+        $valuationStatusChange = PropertyService::changeValuationStatus($data);
+        if($valuationStatusChange){
+            return redirect()->route('getValuationEnquiryDetails',['id' => $data['id']])->with('valuationUpdateSuccess', 'Property valuation updated');
         }
     }
 }

@@ -93,9 +93,33 @@ class WebsiteController extends BaseController
         $this->validate($request,$rules);
         $data = $request->all();
         $informationRequest = WebsiteService::createPropertyInformationRequest($data);
-        //dd($informationRequest);
         if($informationRequest){
             return redirect()->route('requestPropertyInformation',['status' => $propertyStatus, 'id' => $propertyId])->with('requestPropInfoSuccess', 'The office will be in touch shortly.');
+        }
+    }
+
+    public function getPropertyEvaluation()
+    {
+        return view('website.pages.book_valuation', compact('data'));
+    }
+
+    public function postPropertyEvaluation(Request $request)
+    {
+        $rules = array(
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'postcode' => 'required',
+            'preferred_date' => 'required|date|after:tomorrow',
+            'preferred_time' => 'required'
+        );
+    
+        $this->validate($request,$rules);
+        $data = $request->all();
+        $evaluation = WebsiteService::createpropertyValuationAppointment($data);
+        if($evaluation){
+            return redirect()->route('getPropertyEvaluation')->with('propertyEvaluationSuccess', 'Your property valuation request has been received. The office will be in touch shortly');
         }
     }
 }

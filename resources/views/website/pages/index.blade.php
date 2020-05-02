@@ -63,11 +63,11 @@
       </div>
       <div class="col-md-6">
         <h2>Book your free home valuation</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. 
-          Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, 
-          tortor mauris condimentum nibh, 
-          ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-primary" href="#" role="button">Book an appointment &raquo;</a></p>
+        <p>Havilah Housing offers a free on-site valuation of your property. 
+          Book a valuation appontment with us and one of our experts will arrange to visit your property.
+          This will help you take the first steps to selling or letting your home. 
+          Our experts will also be able to answer any questions you may have on selling, buying or letting a home in these testing times..</p>
+        <p><a class="btn btn-primary" href="{{route('getPropertyEvaluation')}}" role="button">Book an appointment &raquo;</a></p>
       </div>
     </div>
 

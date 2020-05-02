@@ -47,4 +47,7 @@ Route::group(['prefix' => 'backoffice/property', 'middleware' => ['web','roles']
      Route::get('information-requests', ['uses' => 'PropertyController@getPropertyEnquiries', 'as' => 'getPropertyEnquiries']);
      Route::get('information-request/{id}', ['uses' => 'PropertyController@getEnquiryDetails', 'as' => 'getEnquiryDetails']);
      Route::post('change-enquiry-status',['uses' => 'PropertyController@changeEnquiryStatus','as' => 'changeEnquiryStatus']);
+     Route::get('valuation-appointments', ['uses' => 'PropertyController@getValuationAppointments', 'as' => 'getValuationAppointments']);
+     Route::get('valuation-appointment/{id}', ['uses' => 'PropertyController@getValuationEnquiryDetails', 'as' => 'getValuationEnquiryDetails']);
+     Route::post('change-valuation-status', ['uses' => 'PropertyController@changeValuationStatus', 'as' => 'changeValuationStatus']);
 });

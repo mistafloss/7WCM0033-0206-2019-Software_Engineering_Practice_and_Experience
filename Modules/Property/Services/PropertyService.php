@@ -10,6 +10,7 @@ use Modules\Property\Entities\PropertySale;
 use Modules\Property\Entities\PropertyAppointment;
 use Modules\Property\Entities\PropertyAppointmentNote;
 use Modules\Property\Entities\PropertyInformationRequest;
+use Modules\Property\Entities\PropertyEvaluation;
 use JD\Cloudder\Facades\Cloudder;
 use Illuminate\Support\Facades\DB;
 
@@ -363,6 +364,30 @@ class PropertyService
             $enquiry = self::getEnquiryById($data['id']);
             $enquiry->status = $data['status'];
             return $enquiry->save();
+        }  
+        catch(\Exception $ex)
+        {
+            return $ex->getMessage();
+        }
+    }
+
+    public static function getValuationAppointments()
+    {
+        return PropertyEvaluation::all();
+    }
+
+    public static function getValuationEnquiryDetails($id)
+    {
+        return PropertyEvaluation::find($id);
+    }
+
+    public static function changeValuationStatus($data)
+    {
+        try
+        {
+            $valuation = self::getValuationEnquiryDetails($data['id']);
+            $valuation->status = $data['status'];
+            return $valuation->save();
         }  
         catch(\Exception $ex)
         {
