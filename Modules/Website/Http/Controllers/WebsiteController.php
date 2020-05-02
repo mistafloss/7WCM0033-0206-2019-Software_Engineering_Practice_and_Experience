@@ -73,9 +73,29 @@ class WebsiteController extends BaseController
 
     public function requestPropertyInformation($status, $id)
     {
-        $data['status'] = $status;
+        $data['property_status'] = $status;
         $data['id'] = $id;
         $property = WebsiteService::getProperty($id);
         return view('website.pages.request_details', compact('data','property'));
+    }
+
+    public function postRequestPropertyInformation(Request $request)
+    {
+        $rules = array(
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'phone' => 'required',
+            'enquiry' => 'required',
+        );
+        $propertyStatus = $request->input('property_status');
+        $propertyId = $request->input('property_id');
+
+        $this->validate($request,$rules);
+        $data = $request->all();
+        $informationRequest = WebsiteService::createPropertyInformationRequest($data);
+        //dd($informationRequest);
+        if($informationRequest){
+            return redirect()->route('requestPropertyInformation',['status' => $propertyStatus, 'id' => $propertyId])->with('requestPropInfoSuccess', 'The office will be in touch shortly.');
+        }
     }
 }

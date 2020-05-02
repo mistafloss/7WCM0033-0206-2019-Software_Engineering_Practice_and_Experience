@@ -58,7 +58,7 @@
                         @endif
                     <div class="row mr-1">
                         <div class="col-md-12 mb-2">
-                            <a href="#" class="btn btn-primary btn-block">Request details</a>
+                            <a href="{{route('requestPropertyInformation',[$bookviewingSlug,$property->id])}}" class="btn btn-primary btn-block">Request details</a>
                         </div>
                     </div>
                     <div class="row mr-1">

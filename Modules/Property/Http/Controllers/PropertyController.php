@@ -222,4 +222,25 @@ class PropertyController extends BaseController
             return redirect()->route('getAppointmentDetails',['id' => $data['id']])->with('apptUpdateSuccess', 'Appointment details updated');;
         }
     }
+
+    public function getPropertyEnquiries()
+    {
+        $enquiries = PropertyService::getPropertyEnquiries();
+        return view('backoffice.pages.propertymanagement.information_requests', compact('enquiries'));
+    }
+
+    public function getEnquiryDetails($id)
+    {
+        $enquiry = PropertyService::getEnquiryById($id);
+        return view('backoffice.pages.propertymanagement.view_information_request', compact('enquiry'));
+    }
+
+    public function changeEnquiryStatus(Request $request)
+    {
+        $data = $request->all();
+        $enqiryStatusChange = PropertyService::changeEnquiryStatus($data);
+        if($enqiryStatusChange){
+            return redirect()->route('getEnquiryDetails',['id' => $data['id']])->with('enquiryUpdateSuccess', 'Property enquiry updated.');;
+        }
+    }
 }

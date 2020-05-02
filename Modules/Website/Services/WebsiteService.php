@@ -4,6 +4,7 @@ namespace Modules\Website\Services;
 
 use Modules\Property\Entities\Property;
 use Modules\Property\Entities\PropertyAppointment;
+use Modules\Property\Entities\PropertyInformationRequest;
 use Illuminate\Support\Facades\DB;
 
 class WebsiteService
@@ -66,4 +67,17 @@ class WebsiteService
         return $ex->getMessage();
     }
  }
+
+ public static function createPropertyInformationRequest($data)
+ {
+    try
+    {
+        return PropertyInformationRequest::create($data);
+    }
+    catch(\Exception $ex)
+    {
+        return $ex->getMessage();
+    }
+ }
+
 }

@@ -28,7 +28,7 @@
                   <a class="dropdown-item" href="{{route('getTenancies')}}">Tenancies</a>
                   <a class="dropdown-item" href="{{route('getSales')}}">Sales</a>
                   <a class="dropdown-item" href="{{route('getAppointments')}}">Viewing Appointments</a>
-                  <a class="dropdown-item" href="">Information Requests</a>
+                  <a class="dropdown-item" href="{{route('getPropertyEnquiries')}}">Information Requests</a>
                 </div>
             </li>
             <li class="nav-item">

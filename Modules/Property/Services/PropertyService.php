@@ -9,6 +9,7 @@ use Modules\Property\Entities\PropertyTenancy;
 use Modules\Property\Entities\PropertySale;
 use Modules\Property\Entities\PropertyAppointment;
 use Modules\Property\Entities\PropertyAppointmentNote;
+use Modules\Property\Entities\PropertyInformationRequest;
 use JD\Cloudder\Facades\Cloudder;
 use Illuminate\Support\Facades\DB;
 
@@ -343,5 +344,29 @@ class PropertyService
             return $ex->getMessage();
         }
        
+    }
+
+    public static function getPropertyEnquiries()
+    {
+        return PropertyInformationRequest::all();
+    }
+
+    public static function getEnquiryById($id)
+    {
+        return PropertyInformationRequest::find($id);
+    }
+
+    public static function changeEnquiryStatus($data)
+    {
+        try
+        {
+            $enquiry = self::getEnquiryById($data['id']);
+            $enquiry->status = $data['status'];
+            return $enquiry->save();
+        }  
+        catch(\Exception $ex)
+        {
+            return $ex->getMessage();
+        }
     }
 }

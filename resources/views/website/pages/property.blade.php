@@ -115,6 +115,15 @@
                         <p class="card-text"><small class="text-muted"></small></p>
                     </div>
                 </div>
+                @if($property->status == 'To Let')
+                    @php
+                        $bookviewingSlug = 'to-rent'
+                    @endphp
+                @elseif($property->status == 'For Sale')
+                    @php
+                        $bookviewingSlug = 'for-sale'
+                    @endphp
+                @endif
                 <div class="col-sm-2">
                     <div class="row mr-1">
                         <div class="col-md-12 mb-2 mt-2">
@@ -123,12 +132,12 @@
                     </div>
                     <div class="row mr-1">
                         <div class="col-md-12 mb-2">
-                            <a href="#" class="btn btn-primary btn-block">Request details</a>
+                            <a href="{{route('requestPropertyInformation',[$bookviewingSlug,$property->id])}}" class="btn btn-primary btn-block">Request details</a>
                         </div>
                     </div>
                     <div class="row mr-1">
                         <div class="col-md-12">
-                            <a href="#" class="btn btn-success btn-block">Book viewing</a>
+                            <a href="{{route('bookViewing',[$bookviewingSlug,$property->id])}}" class="btn btn-success btn-block">Book viewing</a>
                         </div>
                     </div>
                 </div>

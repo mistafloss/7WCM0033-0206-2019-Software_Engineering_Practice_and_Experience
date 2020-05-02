@@ -35,4 +35,9 @@ class Property extends Model
     {
         return $this->hasMany(PropertyAppointment::class);
     }
+
+    public function informationRequest()
+    {
+        return $this->hasMany(PropertyInformationRequest::class);
+    }
 }

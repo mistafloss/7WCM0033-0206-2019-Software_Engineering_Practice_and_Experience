@@ -32,4 +32,5 @@ Route::group(['prefix' => '', 'middleware' => ['web'], 'namespace' => 'Modules\W
     Route::get('/property/{status}/{id}/book-viewing',  ['uses' => 'WebsiteController@bookViewing', 'as' => 'bookViewing']);
     Route::get('/property/{status}/{id}/request-details',  ['uses' => 'WebsiteController@requestPropertyInformation', 'as' => 'requestPropertyInformation']);
     Route::post('/book-appointment', ['uses' => 'WebsiteController@bookPropertyAppointment', 'as' => 'bookPropertyAppointment']);
+    Route::post('/request-information', ['uses' => 'WebsiteController@postRequestPropertyInformation', 'as' => 'postRequestPropertyInformation']);
 });
