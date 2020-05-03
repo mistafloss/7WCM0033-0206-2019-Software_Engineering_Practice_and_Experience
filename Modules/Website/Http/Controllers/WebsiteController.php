@@ -139,9 +139,7 @@ class WebsiteController extends BaseController
     {
         $feesContent = WebsiteService::getPageContentByPageId(1);
         $node_1 = $feesContent->where('content_name', '=', 'fees_content_node_1');
-        //dd($node_1[0]['content']);
-        $content['node_1'] = $node_1[0]['content'];
-       
+        $content['node_1'] = $node_1[0]['content'];     
         return view('website.pages.fees', compact('content'));
     }
 
@@ -149,10 +147,15 @@ class WebsiteController extends BaseController
     {
         $servicesContent = WebsiteService::getPageContentByPageId(2);
         $node_1 = $servicesContent->where('content_name', '=', 'services_content_node_1');
-        //dd($node_1[0]['content']);
         $content['node_1'] = $node_1[0]['content'];
-       
         return view('website.pages.services', compact('content'));
     }
 
+    public function landlordSellers()
+    {
+        $landlordSellersContent = WebsiteService::getPageContentByPageId(3);
+        $node_1 = $landlordSellersContent->where('content_name', '=', 'landlord_sellers_content_node_1');
+        $content['node_1'] = $node_1[0]['content'];
+        return view('website.pages.landlord_sellers', compact('content'));
+    }
 }

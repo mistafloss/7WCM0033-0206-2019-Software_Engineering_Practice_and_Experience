@@ -7,10 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Landlords</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Sellers</a>
+        <a class="nav-link" href="{{route('landlordSellers')}}">Landlords & Sellers</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('allProperties')}}">Properties</a>

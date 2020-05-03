@@ -61,4 +61,27 @@ class ContentController extends BaseController
             return redirect()->route('servicesContent')->with('contentSuccess', 'Content updated.');
         }
     }
+
+    public function landlordsSellers()
+    {
+        $landlords_content_node_1 = ContentService::getPageContentByName(3,'landlord_sellers_content_node_1');
+        $content['landlord_sellers_content_node_1'] = $landlords_content_node_1['content'];
+        return view('backoffice.pages.contentmanagement.landlord_sellers', compact('content'));
+    }
+
+    public function postLandlordSellersContent(Request $request)
+    {
+        $rules = array(
+            'landlord_sellers_content_node_1' => 'required',
+        );
+        $messages = [
+            'landlord_sellers_content_node_1.required' => 'The field cannot be blank'
+        ];
+        $data = $request->all();
+        $contentUpdated = ContentService::updateLandlordSellersPageContent($data);
+        if($contentUpdated){
+            return redirect()->route('landlordsSellersContent')->with('contentSuccess', 'Content updated.');
+        }
+    }
+
 }

@@ -43,8 +43,7 @@
                   <a class="dropdown-item" href="{{route('newsIndex')}}">News</a>
                   <a class="dropdown-item" href="{{route('servicesContent')}}">Services</a>
                   <a class="dropdown-item" href="{{route('feesContent')}}">Fees</a>
-                  <a class="dropdown-item" href="#">Sellers</a>
-                  <a class="dropdown-item" href="#">Landlords</a>
+                  <a class="dropdown-item" href="{{route('landlordsSellersContent')}}">Landlords & Sellers</a>
               </div>
            </li>
             <li class="nav-item">

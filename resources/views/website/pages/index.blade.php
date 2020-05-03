@@ -72,11 +72,26 @@
 
     <hr>
 
+    <div class="row">
+            <div class="container"><h2 class="text-primary text-center">Welcome to Havilah Housing </h2></div>
+            
+                <div class="col-md-6">
+                     <p>Havilah Housing is one of the UK’s best known and most well-regarded property agents, based in Southampton.</p>
+                     <p>Established in 1986, Havilah Housing was originally set up as a lettings business, but now offers sales services, so we can
+                     help you with all of your property needs, whether you’re buying, selling, letting or renting.</p>
+                </div>
+                <div class="col-md-6">
+                    <p>If you’re looking for a trustworthy agent with local knowledge and a solid reputation for great service, you’ve come to the right place. 
+                    Welcome to Havilah Housing.</p>
+                    <p>Havilah Housing has got the experience and expertise to help you sell your property in the right timeframe for the best price.</p>
+                    <p>We can help you at every step of the way, from marketing the property, right through to managing viewings and progressing the sale.</p>
+                </div>
+            
+      
+    </div>
   </div> <!-- /container -->
 
-  <div class="container-fluid">
-      testimonials section
-  </div>
+  
 </main>
 
 @endsection

@@ -26,6 +26,15 @@
             .loading{
                 display:none;
             }
+            .footer {
+  background-color: #f5f5f5;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
         </style>
     </head>
        

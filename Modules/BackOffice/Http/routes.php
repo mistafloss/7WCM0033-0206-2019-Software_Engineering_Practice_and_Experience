@@ -42,6 +42,9 @@ Route::group(['prefix' => 'backoffice', 'middleware' => ['web'], 'namespace' => 
         Route::post('updatefeescontent',   ['uses' => 'ContentController@postFeesContent', 'as' => 'postFeesContent']);
         Route::get('content/services', ['uses' => 'ContentController@services', 'as' => 'servicesContent']);
         Route::post('updateservicescontent',   ['uses' => 'ContentController@postServicesContent', 'as' => 'postServicesContent']);
+        Route::get('content/landlords-sellers', ['uses' => 'ContentController@landlordsSellers', 'as' => 'landlordsSellersContent']);
+        Route::post('updatelandlordsellerscontent',   ['uses' => 'ContentController@postLandlordSellersContent', 'as' => 'postLandlordSellersContent']);
+
     });
    
 });

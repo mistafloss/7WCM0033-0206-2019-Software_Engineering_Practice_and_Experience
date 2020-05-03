@@ -28,4 +28,11 @@ class ContentService
         $node_1->content = $data['services_content_node_1'];
         return $node_1->save();
     }
+
+    public static function updateLandlordSellersPageContent($data)
+    {
+        $node_1 = PageContent::where('content_name', '=', 'landlord_sellers_content_node_1')->first();
+        $node_1->content = $data['landlord_sellers_content_node_1'];
+        return $node_1->save();
+    }
 }
