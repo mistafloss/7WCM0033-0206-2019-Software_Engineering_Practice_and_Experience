@@ -35,4 +35,7 @@ Route::group(['prefix' => '', 'middleware' => ['web'], 'namespace' => 'Modules\W
     Route::post('/request-information', ['uses' => 'WebsiteController@postRequestPropertyInformation', 'as' => 'postRequestPropertyInformation']);
     Route::get('/book-valuation', ['uses' => 'WebsiteController@getPropertyEvaluation', 'as' => 'getPropertyEvaluation']);
     Route::post('/book-valuation-appointment', ['uses' => 'WebsiteController@postPropertyEvaluation', 'as' => 'postPropertyEvaluation']);
+
+    Route::get('/news',  ['uses' => 'WebsiteController@getAllArticles', 'as' => 'getAllArticles']);
+    Route::get('/news/{slug}',  ['uses' => 'WebsiteController@getArticleBySlug', 'as' => 'getArticleBySlug']);
 });

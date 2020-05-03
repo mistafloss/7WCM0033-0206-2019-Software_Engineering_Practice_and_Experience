@@ -19,7 +19,7 @@
         <a class="nav-link" href="#">Services</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">News</a>
+        <a class="nav-link" href="{{route('getAllArticles')}}">News</a>
       </li>
     </ul>
   </div>

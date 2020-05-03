@@ -56,9 +56,8 @@
     <div class="row">
       <div class="col-md-6">
         <h2>Simple transparent fees</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, 
-          tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. 
-          Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p>We are committed to ensuring our landlord fees are straight forward and transparent so 
+            there are no unexpected surprises, allowing you to make informed decisions. </p>
         <p><a class="btn btn-primary" href="#" role="button">Find out more &raquo;</a></p>
       </div>
       <div class="col-md-6">

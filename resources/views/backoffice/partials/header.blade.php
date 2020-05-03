@@ -41,7 +41,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarContentMgtDropdownMenuLink">
                   <a class="dropdown-item" href="#">Testimonials</a>
-                  <a class="dropdown-item" href="#">News</a>
+                  <a class="dropdown-item" href="{{route('newsIndex')}}">News</a>
                   <a class="dropdown-item" href="#">Services</a>
                   <a class="dropdown-item" href="#">Fees</a>
                   <a class="dropdown-item" href="#">Sellers</a>

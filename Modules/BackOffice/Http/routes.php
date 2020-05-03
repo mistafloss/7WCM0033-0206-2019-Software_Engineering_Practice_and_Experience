@@ -33,6 +33,11 @@ Route::group(['prefix' => 'backoffice', 'middleware' => ['web'], 'namespace' => 
         Route::post('createpartner',   ['uses' => 'PartnerController@createPartner', 'as' => 'createPartner']);
         Route::get('partner/show/{id}', ['uses' => 'PartnerController@showPartner',   'as' => 'showPartner']);
         Route::post('updatepartner', ['uses' => 'PartnerController@updatePartner', 'as' => 'updatePartner']);
+        Route::get('news',  ['uses' => 'NewsController@index',  'as' => 'newsIndex' ]);
+        Route::get('news/add-new',  ['uses' => 'NewsController@newArticle',  'as' => 'newArticle' ]);
+        Route::get('news/update/{id}',  ['uses' => 'NewsController@updateArticle',  'as' => 'updateArticle' ]);
+        Route::post('updatearticle',  ['uses' => 'NewsController@postUpdateArticle',  'as' => 'postUpdateArticle']);
+        Route::post('createarticle',   ['uses' => 'NewsController@postNewArticle', 'as' => 'postNewArticle']);
     });
    
 });

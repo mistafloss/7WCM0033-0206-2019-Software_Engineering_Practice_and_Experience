@@ -122,4 +122,16 @@ class WebsiteController extends BaseController
             return redirect()->route('getPropertyEvaluation')->with('propertyEvaluationSuccess', 'Your property valuation request has been received. The office will be in touch shortly');
         }
     }
+
+    public function getAllArticles()
+    {
+        $articles = WebsiteService::getAllArticles();
+        return view('website.pages.news', compact('articles'));
+    }
+
+    public function getArticleBySlug($slug)
+    {
+        $article = WebsiteService::getArticleBySlug($slug);
+        return view('website.pages.view_article', compact('article'));
+    }
 }

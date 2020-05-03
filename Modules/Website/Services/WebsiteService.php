@@ -6,6 +6,7 @@ use Modules\Property\Entities\Property;
 use Modules\Property\Entities\PropertyAppointment;
 use Modules\Property\Entities\PropertyInformationRequest;
 use Modules\Property\Entities\PropertyEvaluation;
+use Modules\BackOffice\Entities\News;
 use Illuminate\Support\Facades\DB;
 
 class WebsiteService
@@ -91,6 +92,16 @@ class WebsiteService
     {
         return $ex->getMessage();
     }
+ }
+
+ public static function getAllArticles()
+ {
+    return News::paginate(12);
+ }
+
+ public static function getArticleBySlug($slug)
+ {
+    return News::where('slug', $slug)->first();
  }
 
 }
