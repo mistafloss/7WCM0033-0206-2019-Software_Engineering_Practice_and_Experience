@@ -40,10 +40,9 @@
                 Content Management
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarContentMgtDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Testimonials</a>
                   <a class="dropdown-item" href="{{route('newsIndex')}}">News</a>
-                  <a class="dropdown-item" href="#">Services</a>
-                  <a class="dropdown-item" href="#">Fees</a>
+                  <a class="dropdown-item" href="{{route('servicesContent')}}">Services</a>
+                  <a class="dropdown-item" href="{{route('feesContent')}}">Fees</a>
                   <a class="dropdown-item" href="#">Sellers</a>
                   <a class="dropdown-item" href="#">Landlords</a>
               </div>

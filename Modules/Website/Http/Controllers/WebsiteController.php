@@ -134,4 +134,25 @@ class WebsiteController extends BaseController
         $article = WebsiteService::getArticleBySlug($slug);
         return view('website.pages.view_article', compact('article'));
     }
+
+    public function fees()
+    {
+        $feesContent = WebsiteService::getPageContentByPageId(1);
+        $node_1 = $feesContent->where('content_name', '=', 'fees_content_node_1');
+        //dd($node_1[0]['content']);
+        $content['node_1'] = $node_1[0]['content'];
+       
+        return view('website.pages.fees', compact('content'));
+    }
+
+    public function services()
+    {
+        $servicesContent = WebsiteService::getPageContentByPageId(2);
+        $node_1 = $servicesContent->where('content_name', '=', 'services_content_node_1');
+        //dd($node_1[0]['content']);
+        $content['node_1'] = $node_1[0]['content'];
+       
+        return view('website.pages.services', compact('content'));
+    }
+
 }

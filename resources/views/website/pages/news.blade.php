@@ -14,8 +14,9 @@
                 <img src="{{$article->image_url}}" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">{{$article->title}}</h5>
+                  <p>{{$article->created_at}} </p>
                   <p class="card-text">{{$article->intro_text}}</p>
-                  <a href="{{route('getArticleBySlug',$article->slug)}}" class="btn btn-primary">Update article </a>
+                  <a href="{{route('getArticleBySlug',$article->slug)}}" class="btn btn-primary">Read more </a>
                 </div>
             </div>
             @endforeach

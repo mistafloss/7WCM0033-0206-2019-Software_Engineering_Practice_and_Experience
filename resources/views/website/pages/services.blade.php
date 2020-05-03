@@ -3,7 +3,7 @@
 <main role="main">
 <div class="jumbotron" style="">
     <div class="container">
-        <h3 class="display-4 text-primary text-center">Fees</h3>
+        <h3 class="display-4 text-primary text-center">Services</h3>
     </div>
 </div>
 <div class="container">

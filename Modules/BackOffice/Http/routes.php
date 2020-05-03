@@ -38,6 +38,10 @@ Route::group(['prefix' => 'backoffice', 'middleware' => ['web'], 'namespace' => 
         Route::get('news/update/{id}',  ['uses' => 'NewsController@updateArticle',  'as' => 'updateArticle' ]);
         Route::post('updatearticle',  ['uses' => 'NewsController@postUpdateArticle',  'as' => 'postUpdateArticle']);
         Route::post('createarticle',   ['uses' => 'NewsController@postNewArticle', 'as' => 'postNewArticle']);
+        Route::get('content/fees', ['uses' => 'ContentController@fees', 'as' => 'feesContent']);
+        Route::post('updatefeescontent',   ['uses' => 'ContentController@postFeesContent', 'as' => 'postFeesContent']);
+        Route::get('content/services', ['uses' => 'ContentController@services', 'as' => 'servicesContent']);
+        Route::post('updateservicescontent',   ['uses' => 'ContentController@postServicesContent', 'as' => 'postServicesContent']);
     });
    
 });

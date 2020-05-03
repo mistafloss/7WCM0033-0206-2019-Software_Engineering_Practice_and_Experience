@@ -38,4 +38,6 @@ Route::group(['prefix' => '', 'middleware' => ['web'], 'namespace' => 'Modules\W
 
     Route::get('/news',  ['uses' => 'WebsiteController@getAllArticles', 'as' => 'getAllArticles']);
     Route::get('/news/{slug}',  ['uses' => 'WebsiteController@getArticleBySlug', 'as' => 'getArticleBySlug']);
+    Route::get('/fees', ['uses' => 'WebsiteController@fees', 'as' => 'fees']);
+    Route::get('/services', ['uses' => 'WebsiteController@services', 'as' => 'services']);
 });

@@ -58,7 +58,7 @@
         <h2>Simple transparent fees</h2>
         <p>We are committed to ensuring our landlord fees are straight forward and transparent so 
             there are no unexpected surprises, allowing you to make informed decisions. </p>
-        <p><a class="btn btn-primary" href="#" role="button">Find out more &raquo;</a></p>
+        <p><a class="btn btn-primary" href="{{route('fees')}}" role="button">Find out more &raquo;</a></p>
       </div>
       <div class="col-md-6">
         <h2>Book your free home valuation</h2>
