@@ -19,7 +19,7 @@
                 <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="">Listing Title</label>
+                                <label for="">Listing Title*</label>
                                 <input type="text" class="form-control" id="listingTitle" name="listing_title" value="{{$property->listing_title}}">
                                 <span class="text-danger"> 
                                     @if($errors->has('listing_title'))
@@ -28,7 +28,7 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <label for="">House number</label>
+                                <label for="">House number*</label>
                                 <input type="text" class="form-control" id="houseNumber" name="house_number" value="{{$property->house_number}}">
                                 <span class="text-danger"> 
                                     @if($errors->has('house_number'))
@@ -37,7 +37,7 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <label for="">Street</label>
+                                <label for="">Street*</label>
                                 <input type="text" class="form-control" id="street" name="street" value="{{$property->street}}">
                                 <span class="text-danger"> 
                                     @if($errors->has('street'))
@@ -46,7 +46,7 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <label for="">City</label>
+                                <label for="">City*</label>
                                 <input type="text" class="form-control" id="city" name="city" value="{{$property->city}}">
                                 <span class="text-danger"> 
                                     @if($errors->has('city'))
@@ -55,7 +55,7 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <label for="">Post Code</label>
+                                <label for="">Post Code*</label>
                                 <input type="text" class="form-control" id="postcode" name="postcode" value="{{$property->postcode}}">
                                 <span class="text-danger"> 
                                     @if($errors->has('postcode'))
@@ -72,7 +72,7 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="">Brief description</label>
+                                <label for="">Brief description*</label>
                                 <textarea class="form-control tiny-textarea" id="briefDescription" name="brief_description" rows="4">{{$property->brief_description}}</textarea>
                                 <span class="text-danger"> 
                                     @if($errors->has('brief_description'))
@@ -81,7 +81,7 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <label for="">Features</label>
+                                <label for="">Features*</label>
                                 <textarea class="form-control tiny-textarea" id="propertyFeatures" name="property_features" rows="4">{{$property->features}}</textarea>
                                 <span class="text-danger"> 
                                     @if($errors->has('property_features'))
@@ -90,7 +90,7 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <label for="">Description</label>
+                                <label for="">Description*</label>
                                 <textarea class="form-control tiny-textarea" id="propertyDescription" name="property_description" rows="4">{{$property->description}}</textarea>
                                 <span class="text-danger">
                                     @if($errors->has('property_description'))
@@ -107,7 +107,7 @@
                 <div class="row">
                     <div class="col">
                             <div class="form-group">
-                                <label for="">Property Type</label>
+                                <label for="">Property Type*</label>
                                 <select class="form-control" id="propertyType" name="property_category_id">
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}"  {{ $property->property_category_id == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
@@ -120,7 +120,7 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <label for="">Property Price (£)</label>
+                                <label for="">Property Price (£)*</label>
                                 <input type="text" class="form-control" id="propertyPrice" name="property_price" value="{{$property->property_price}}">
                                 <span class="text-danger">
                                     @if($errors->has('property_price'))

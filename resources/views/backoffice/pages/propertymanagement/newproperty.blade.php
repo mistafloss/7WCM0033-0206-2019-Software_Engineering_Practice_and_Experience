@@ -19,27 +19,27 @@
                 <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="">Listing Title</label>
+                                <label for="">Listing Title*</label>
                                 <input type="text" class="form-control" id="listingTitle" name="listing_title" placeholder="">
                                 <span class="text-danger" id="listingTitle_error"> </span>
                             </div>
                             <div class="form-group">
-                                <label for="">House number</label>
+                                <label for="">House number*</label>
                                 <input type="text" class="form-control" id="houseNumber" name="house_number" placeholder="">
                                 <span class="text-danger" id="houseNumber_error"> </span>
                             </div>
                             <div class="form-group">
-                                <label for="">Street</label>
+                                <label for="">Street*</label>
                                 <input type="text" class="form-control" id="street" name="street" placeholder="">
                                 <span class="text-danger" id="street_error"> </span>
                             </div>
                             <div class="form-group">
-                                <label for="">City</label>
+                                <label for="">City*</label>
                                 <input type="text" class="form-control" id="city" name="city" placeholder="">
                                 <span class="text-danger" id="city_error"> </span>
                             </div>
                             <div class="form-group">
-                                <label for="">Post Code</label>
+                                <label for="">Post Code*</label>
                                 <input type="text" class="form-control" id="postcode" name="postcode" placeholder="">
                                 <span class="text-danger" id="postcode_error"> </span>
                             </div>
@@ -52,17 +52,17 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="">Brief Description</label>
+                                <label for="">Brief Description*</label>
                                 <textarea class="form-control tiny-textarea" id="briefDescription" name="brief_description" rows="4"></textarea>
                                 <span class="text-danger" id="briefDescription_error"> </span>
                             </div>
                             <div class="form-group">
-                                <label for="">Features</label>
+                                <label for="">Features*</label>
                                 <textarea class="form-control tiny-textarea" id="propertyFeatures" name="property_features" rows="4"></textarea>
                                 <span class="text-danger" id="propertyFeatures_error"> </span>
                             </div>
                             <div class="form-group">
-                                <label for="">Description</label>
+                                <label for="">Description*</label>
                                 <textarea class="form-control tiny-textarea" id="propertyDescription" name="property_description" rows="4"></textarea>
                                 <span class="text-danger" id="propertyDescription_error"> </span>
                             </div>
@@ -75,7 +75,7 @@
                 <div class="row">
                     <div class="col">
                             <div class="form-group">
-                                <label for="">Property Type</label>
+                                <label for="">Property Type*</label>
                                 <select class="form-control" id="propertyType" name="property_category_id">
                                     <option value="">--Select Property Type--</option>
                                     @foreach($categories as $category)
@@ -85,14 +85,14 @@
                                 <span class="text-danger" id="propertyType_error"> </span>
                             </div>
                             <div class="form-group">
-                                <label for="">Property Price</label>
+                                <label for="">Property Price(£)*</label>
                                 <input type="text" class="form-control" id="propertyPrice" name="property_price" placeholder="">
                                 <span class="text-danger" id="propertyPrice_error"> </span>
                             </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
-                            <label for="">Property Status</label>
+                            <label for="">Property Status*</label>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="property_status" id="propertyStatusSale" value="For Sale">
                                 <label class="form-check-label" for="propertyStatusSale">For Sale</label>
@@ -105,7 +105,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="">Publish Property on Website</label>
+                            <label for="">Publish Property on Website*</label>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="publish_property" id="publishPropertyYes" value="1">
                                 <label class="form-check-label" for="publishPropertyYes">Yes</label>
@@ -120,7 +120,7 @@
                     </div>
                     <div class="col">
                             <div class="form-group">
-                                <label for="">Number of bedrooms</label>
+                                <label for="">Number of bedrooms*</label>
                                 <select class="form-control" name="no_of_bedrooms" id="noOfBedrooms">
                                     <option value="">--Select--<option>
                                     <option value="1">1<option>
@@ -141,7 +141,7 @@
                 <!--ROW -->
                 <div class="row">
                     <div class="col colPropertyImageControls">
-                        <label for="">Upload Property Images</label>
+                        <label for="">Upload Property Images*</label>
                         <div class="input-group property-image">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="propertyImages" name="property_images[]" multiple accept="image/*" >

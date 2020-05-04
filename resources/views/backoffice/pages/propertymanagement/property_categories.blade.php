@@ -11,7 +11,7 @@
     </div>
     <span class="float-right">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPropertyCategoryModal">
-            + Add Category
+            + Add Property Type
         </button>
     </span>
   </div>
@@ -49,7 +49,7 @@
         <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="addPropertyCategoryModalLabel">Add New Property Category</h5>
+            <h5 class="modal-title" id="addPropertyCategoryModalLabel">Add New Property Type</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -63,7 +63,7 @@
                 <form>
 
                     <div class="form-group">
-                      <label for="propertyCategoryName">Name</label>
+                      <label for="propertyCategoryName">Name*</label>
                       <input type="text" class="form-control" id="propertyCategoryName">
                       <span class="text-danger" id="propertyCategoryName_error"> </span>
                     </div>
@@ -88,7 +88,7 @@
             <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="editPropertyCategoryModalLabel">Edit Property Category</h5>
+                <h5 class="modal-title" id="editPropertyCategoryModalLabel">Edit Property Type</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -101,7 +101,7 @@
                   </div>
                     <form>
                         <div class="form-group">
-                          <label for="propertyCategoryName">Name</label>
+                          <label for="propertyCategoryName">Name*</label>
                           <input type="text" class="form-control" id="propertyCategoryName_edit">
                           <span class="text-danger" id="editPropertyCategoryName_error"> </span>
                         </div>
