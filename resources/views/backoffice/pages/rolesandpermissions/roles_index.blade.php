@@ -35,7 +35,7 @@
                      None
                   @endif
                 </td>
-                <td><a href="{{route('addUser')}}" class="btn btn-primary"> Show</a></td>
+                <td><a href="{{route('viewRole', $role->id)}}" class="btn btn-primary"> Show</a></td>
               </tr>
               @endforeach
             </tbody>

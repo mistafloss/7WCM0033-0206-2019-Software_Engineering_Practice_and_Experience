@@ -6,7 +6,7 @@ use Modules\UserManagement\Entities\{Role, Permission};
 
 trait HasPermissionsTrait
 {
-
+    
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'users_roles');

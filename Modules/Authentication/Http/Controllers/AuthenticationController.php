@@ -24,7 +24,7 @@ class AuthenticationController extends BaseController
         if(Auth::attempt(['username' => $request->get('username'),'password' => $request->get('password'), 'status' => 1]))
         {
             if(Auth::user()->hasRole('Developer', 'Primary Admin','Manager','Staff')){
-                return redirect()->route('backofficeDashboard');
+                return redirect()->route('propertyIndex');
             }else{
                 return redirect()->route('backofficeIndex')->withFail('Login Failed. Access denied!');
             }

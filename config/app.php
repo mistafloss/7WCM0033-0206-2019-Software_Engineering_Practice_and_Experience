@@ -167,7 +167,8 @@ return [
         /*
          * Package Service Providers...
          */
-
+        JD\Cloudder\CloudderServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -181,7 +182,8 @@ return [
         Modules\Property\Providers\PropertyServiceProvider::class,
         Modules\Authentication\Providers\AuthenticationServiceProvider::class,
         Modules\UserManagement\Providers\UserManagementServiceProvider::class,
-        Modules\BackOffice\Providers\BackOfficeServiceProvider::class
+        Modules\BackOffice\Providers\BackOfficeServiceProvider::class,
+        Modules\Website\Providers\WebsiteServiceProvider::class,
     ],
 
     /*
@@ -230,6 +232,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        /*
+         * Package Aliases...
+         */
+        'Cloudder' => JD\Cloudder\Facades\Cloudder::class,
 
     ],
 

@@ -3,86 +3,117 @@
 namespace Modules\Property\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
-
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Modules\Property\Services\PropertyService;
+use Validator;
+use Illuminate\Http\Request;
 
 
 class PropertyApiController extends BaseController
 {
-
+    use  ValidatesRequests, AuthorizesRequests;
     /**
-     * List Foo objects
-     *  Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function list(Request $request)
-    {
-        $per_page = $request->has('per_page') ? $request->get('per_page'): 10;
-        return response()->json(['success' => true, 'data' => FooService::list($per_page)]);
-    }
-
-
-    /**
-     * Create new Foo object
+     * Create new Property Category object
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function create(Request $request)
+    public function createPropertyCategory(Request $request)
     {
-        /** DO VALIDATE */
-
-        $data = $request->except('_token');
-
-        $newObject = Foo::create($data);
-        return response()->json(['success' => true, 'data' => $newObject]);
+        $rules = array(
+            'name' => 'required',
+        );
+        $messages = array('name.required' => 'This field is required');
+        $this->validate( $request , $rules, $messages);
+        $data = $request->all();
+        $propertyCategory = PropertyService::createCategory($data);
+        return response()->json(['success' => true, 'data' => $propertyCategory]);
     }
 
-
+    
     /**
-     * View a Foo object
+     * View Property Category 
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function view($id)
+    public function viewPropertyCategory($id)
     {
-        $object = Foo::find($id);
-
-       return response()->json(['success' => true, 'data' => $object]);
+        $category = PropertyService::getCategoryById($id);
+        return response()->json(['success' => true, 'data' => $category]);
     }
 
 
     /**
-     * Update a Foo object
-     * @param Request $request
+     * Update a Property Category
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function updatePropertyCategory(Request $request)
     {
-         /** DO VALIDATE */
-
+        $rules = array(
+            'name' => 'required',
+        );
+        $messages = array('name.required' => 'This field is required');
+        $this->validate( $request , $rules, $messages);
         $data = $request->except('_token');
 
-        $object = Foo::find($id);
+        $category = PropertyService::updatePropertyCategory($data);
 
-        $object->update($data);
-
-         return response()->json(['success' => true, 'data' => $object]);
+         return response()->json(['success' => true, 'data' => $category]);
     }
 
-
     /**
-     * Delete a Foo object
+     * Create a Property
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function delete(Request $request)
+    public function createProperty(Request $request)
     {
-        $object_id = $request->get('foo_id');
+       
+        $rules = array(
+            'listing_title' => 'required',
+            'house_number' => 'required',
+            'street' => 'required',
+            'city' => 'required',
+            'postcode' => 'required',
+            'property_features' => 'required',
+            'brief_description' => 'required',
+            'property_description' => 'required',
+            'property_category_id' => 'required',
+            'property_price' => 'required|numeric',
+            'property_status' => 'required',
+            'publish_property' => 'required',
+            'property_images' => 'required',
+            'no_of_bedrooms' => 'required',
+            'property_images.*' => 'mimes:png,gif,jpeg,jpg'
+        );
 
-        $object = Foo::find($object_id);
+         $messages = [
+             'property_category_id.required' => 'The property type field is required',
+             'property_images.required' => 'Please upload at least one image for the property',
+             'no_of_bedrooms.required' => 'Please select the number of bedrooms'
+            ];
+         $this->validate($request,$rules, $messages);
+         $data = $request->all();
+        $propertySaved = PropertyService::createProperty($data);
+        return response()->json(['success' => true, 'data' => $propertySaved]);
+    }
+    
 
-        $object->delete();
-
-         return response()->json(['success' => true, 'data' => $object]);
+    /**
+     * Add Property Viewing Appointment note
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function addViewAppointmentNote(Request $request)
+    {
+        $rules = array(
+            'note' => 'required',
+        );
+      
+        $this->validate( $request , $rules);
+        $data = $request->all();
+        $note = PropertyService::createViewAppointmentNote($data);
+        return response()->json(['success' => true, 'data' => $note]);
     }
 }

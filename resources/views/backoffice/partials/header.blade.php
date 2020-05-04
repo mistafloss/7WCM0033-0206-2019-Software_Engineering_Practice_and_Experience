@@ -2,7 +2,7 @@
     <div class="topHeader" style="height:70px; width:100%">
         <div class="container-fluid">
             <div class="topHeaderLogo">
-                <a href=""> Estate Agency Portal - Backoffice </a>
+                <a href=""> Havilah Housing - Backoffice Portal</a>
             </div>
         </div>
     </div>
@@ -12,9 +12,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item active">
+            <!-- <li class="nav-item active">
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
+            </li> -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Property Management
@@ -23,27 +23,29 @@
                   {{-- @can('can_view_list_of_users')
                   <a class="dropdown-item" href="#">Properties</a>
                   @endcan --}}
-                  <a class="dropdown-item" href="#">Properties</a>
-                  <a class="dropdown-item" href="#">Reports</a>
-                  <a class="dropdown-item" href="#">Property Categories</a>
-                  <a class="dropdown-item" href="#">Manage Property Viewing Appointments</a>
+                  <a class="dropdown-item" href="{{route('propertyIndex')}}">Properties</a>
+                  <a class="dropdown-item" href="{{route('propertyCategoryIndex')}}">Property Types</a>
+                  <a class="dropdown-item" href="{{route('getTenancies')}}">Tenancies</a>
+                  <a class="dropdown-item" href="{{route('getSales')}}">Sales</a>
+                  <a class="dropdown-item" href="{{route('getAppointments')}}">Viewing Appointments</a>
+                  <a class="dropdown-item" href="{{route('getPropertyEnquiries')}}">Information Requests</a>
+                  <a class="dropdown-item" href="{{route('getValuationAppointments')}}">Valuation appointments</a>
                 </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Event Management</a>
+                <a class="nav-link" href="{{route('partnerIndex')}}">Partners</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Partners
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Buyers</a>
-                  <a class="dropdown-item" href="#">Sellers</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Content Management</a>
-            </li>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarContentMgtDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Content Management
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarContentMgtDropdownMenuLink">
+                  <a class="dropdown-item" href="{{route('newsIndex')}}">News</a>
+                  <a class="dropdown-item" href="{{route('servicesContent')}}">Services</a>
+                  <a class="dropdown-item" href="{{route('feesContent')}}">Fees</a>
+                  <a class="dropdown-item" href="{{route('landlordsSellersContent')}}">Landlords & Sellers</a>
+              </div>
+           </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('usermanagementIndex')}}">User Management</a>
             </li>

@@ -17,17 +17,11 @@ class UserManagementApiController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     /**
-     * List Foo objects
-     *  Request $request
+     * Create new User 
+     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function list(Request $request)
-    {
-        $per_page = $request->has('per_page') ? $request->get('per_page'): 10;
-        return response()->json(['success' => true, 'data' => FooService::list($per_page)]);
-    }
-
-    protected function createValidation($request)
+    public function create(Request $request)
     {
         $rules = array(
             'first_name' => 'required',
@@ -40,15 +34,6 @@ class UserManagementApiController extends BaseController
 
         $messages = array('role_id.required' => 'Select a role for the user');
         $this->validate( $request , $rules, $messages);
-    }
-    /**
-     * Create new Foo object
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function create(Request $request)
-    {
-        $this->createValidation($request);
         $data = $request->all();
         $user = UserService::createUser($data);
         return response()->json(['status' => 'success', 'data' => $user]);
@@ -56,51 +41,24 @@ class UserManagementApiController extends BaseController
 
 
     /**
-     * View a Foo object
-     * @param $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function view($id)
-    {
-        $object = Foo::find($id);
-
-       return response()->json(['success' => true, 'data' => $object]);
-    }
-
-
-    /**
-     * Update a Foo object
+     * Update a User 
      * @param Request $request
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-         /** DO VALIDATE */
-
+        $rules = array(
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'username' => 'required',
+            'email' => 'required',
+            'role_id' => 'required'
+        );
+        $this->validate( $request , $rules);
         $data = $request->except('_token');
-
-        $object = Foo::find($id);
-
-        $object->update($data);
-
-         return response()->json(['success' => true, 'data' => $object]);
+        UserService::updateUser($data);
+        return redirect()->route('usermanagementIndex')->withSuccess('User Updated');
     }
 
-
-    /**
-     * Delete a Foo object
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function delete(Request $request)
-    {
-        $object_id = $request->get('foo_id');
-
-        $object = Foo::find($object_id);
-
-        $object->delete();
-
-         return response()->json(['success' => true, 'data' => $object]);
-    }
 }
