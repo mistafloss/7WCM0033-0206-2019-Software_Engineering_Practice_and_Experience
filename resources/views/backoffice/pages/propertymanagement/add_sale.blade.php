@@ -17,7 +17,7 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label for="">Select Property</label>
+                            <label for="">Select Property*</label>
                             <select name="property_id" class="form-control" id="">
                                 <option value="">--Select Property--</option>
                                 @foreach($propertiesForSale as $property)
@@ -38,7 +38,7 @@
 
                    <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="">Select Seller</label>
+                            <label for="">Select Seller*</label>
                             <select name="seller_id" class="form-control" id="">
                                 <option value="">--Select Seller--</option>
                                 @foreach($sellers as $seller)
@@ -56,7 +56,7 @@
                             </span>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="">Select Buyer</label>
+                            <label for="">Select Buyer*</label>
                             <select name="buyer_id" class="form-control" id="">
                                 <option value="">--Select Buyer--</option>
                                 @foreach($buyers as $buyer)
@@ -79,7 +79,7 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="">Date of sale</label>
+                            <label for="">Date of sale*</label>
                             <input type="text" class="datepicker form-control" name="date_sold" value="{{ old('date_sold') }}">
                             <span class="text-danger"> 
                                 @if($errors->has('date_sold'))

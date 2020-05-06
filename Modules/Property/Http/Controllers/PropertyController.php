@@ -176,7 +176,6 @@ class PropertyController extends BaseController
         $this->validate($request,$rules, $messages);
         $data = $request->all();
         $sale = PropertyService::completeSale($data);
-        //dd($sale);
         if($sale){
             return redirect()->route('getSales')->with('saleSuccess', 'Property Sale completed');;
         }
@@ -192,7 +191,6 @@ class PropertyController extends BaseController
 
     public function unlockPropertyForResale(Request $request)
     {
-        //add a deleted_at date to the sale
         //change the status of the property back to forsale
         $sale_id = $request->input('sale_id');
         $propertyUnlock = PropertyService::unlockPropertyForSale($sale_id);

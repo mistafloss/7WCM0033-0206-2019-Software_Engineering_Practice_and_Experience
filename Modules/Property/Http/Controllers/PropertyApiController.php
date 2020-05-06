@@ -45,7 +45,7 @@ class PropertyApiController extends BaseController
 
     /**
      * Update a Property Category
-     * @param $id
+     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function updatePropertyCategory(Request $request)

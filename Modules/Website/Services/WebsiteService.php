@@ -51,7 +51,8 @@ class WebsiteService
 
  public static function getAllProperties()
  {
-     return Property::all();
+     return Property::where('status', '=', 'To Let')
+						->Orwhere('status', '=', 'For Sale')->paginate(5);
  }
 
  public static function getProperty($id)

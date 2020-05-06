@@ -90,7 +90,9 @@
                 
             </div>    
         </div>
-    
+		 @if( !app('request')->input('intent') && !app('request')->input('location') && !app('request')->input('type') && !app('request')->input('bedrooms') )
+			<div class="mx-auto" style="width:200px;">{{ $properties->links("pagination::bootstrap-4") }}</div>
+		 @endif
     @if($properties->count() > 0)
         @foreach($properties as $property)
         <div class="card mb-2" style="">

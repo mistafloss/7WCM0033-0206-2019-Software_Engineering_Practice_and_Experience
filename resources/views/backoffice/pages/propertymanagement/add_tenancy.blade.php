@@ -17,7 +17,7 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="">Select Property</label>
+                            <label for="">Select Property*</label>
                             <select name="property_id" class="form-control" id="">
                                 <option value="">--Select Property--</option>
                                 @foreach($propertiesToLet as $property)
@@ -35,7 +35,7 @@
                             </span>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="">Select Principal Tenant</label>
+                            <label for="">Select Principal Tenant*</label>
                             <select name="partner_id" class="form-control" id="">
                                 <option value="">--Select Principal Tenant--</option>
                                 @foreach($partners as $partner)
@@ -56,7 +56,7 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="">Start date</label>
+                            <label for="">Start date*</label>
                             <input type="text" class="datepicker form-control" name="start_date" value="{{ old('start_date') }}">
                             <span class="text-danger"> 
                                 @if($errors->has('start_date'))
@@ -65,7 +65,7 @@
                             </span>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="">End date</label>
+                            <label for="">End date*</label>
                             <input type="text" class="datepicker form-control" name="end_date" value="{{ old('end_date') }}">
                             <span class="text-danger"> 
                                 @if($errors->has('end_date'))
@@ -76,7 +76,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="">Deposit amount</label>
+                            <label for="">Deposit amount(£)*</label>
                             <input type="text" class="form-control" name="deposit" value="{{ old('deposit') }}">
                             <span class="text-danger"> 
                                 @if($errors->has('deposit'))
