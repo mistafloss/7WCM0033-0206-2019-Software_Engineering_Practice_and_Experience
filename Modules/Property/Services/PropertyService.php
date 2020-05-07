@@ -16,11 +16,13 @@ use Illuminate\Support\Facades\DB;
 
 class PropertyService
 {
+    /** return all property types */
     public static function getAllCategories()
     {
         return PropertyCategory::all();
     }
 
+    /** create new property type */
     public static function createCategory($data)
     {
         try
@@ -33,11 +35,13 @@ class PropertyService
         }
     }
 
+    /** get property type by id */
     public static function getCategoryById($id)
     {
         return PropertyCategory::find($id);
     }
 
+    /** update property type */
     public static function updatePropertyCategory($data)
     {
         try
@@ -53,7 +57,7 @@ class PropertyService
             return $ex->getMessage();
         }
     }
-
+    /** create new property */
     public static function createProperty($data)
     {
         try
@@ -115,7 +119,7 @@ class PropertyService
         return Property::all();
     }
 
-
+    /** delete property photo */
     public static function deletePhoto($data)
     {
         try
@@ -171,6 +175,7 @@ class PropertyService
         }
     }
 
+    /** upload property photo */
     public static function submitImage($image, $property)
     {
         $imageName = $image->getClientOriginalName();

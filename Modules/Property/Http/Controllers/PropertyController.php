@@ -18,25 +18,29 @@ class PropertyController extends BaseController
     {
        $this->middleware('auth');
     }
-
+    
+    /**return backoffice property types view */
     public function categoryIndex(Request $request)
     {
         $categories = PropertyService::getAllCategories();
         return view('backoffice.pages.propertymanagement.property_categories', compact('categories'));
     }
 
+    /** return backoffice properties view */
     public function propertyIndex(Request $request)
     {   
         $properties = PropertyService::getAllProperties();
         return view('backoffice.pages.propertymanagement.properties', compact('properties'));
     }
 
+    /** return add new property view */
     public function addNewProperty(Request $request)
     {
         $categories = PropertyService::getAllCategories();
         return view('backoffice.pages.propertymanagement.newproperty', compact('categories'));
     }
 
+    /** show property details */
     public function showProperty($id)
     {
         $categories = PropertyService::getAllCategories();
@@ -44,6 +48,7 @@ class PropertyController extends BaseController
         return view('backoffice.pages.propertymanagement.editproperty', compact('categories','property'));
     }
 
+    /** update property */
     public function updateProperty(Request $request)
     {
         $rules = array(
