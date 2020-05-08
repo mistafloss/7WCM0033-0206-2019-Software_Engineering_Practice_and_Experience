@@ -21,12 +21,12 @@
                         <form method="GET" action="{{url('property-search')}}">
                             <div class="form-row">
                                 <div class="form-group col-md-3">
-                                    <input type="text" class="form-control" name="location" placeholder="Location or postcode">
+                                    <input type="text" class="form-control" value="{{app('request')->input('location')}}" name="location" required placeholder="Location or postcode">
                                     
                                 </div>
-                                <div class="form-group col-md-2">
+                                <div class="form-group col-md-4">
                                     <select class="form-control" name="type">
-                                        <option value="all"> Type</option>
+                                        <option value="all">Any Property type</option>
                                         @foreach($propertyCategories as $category)
                                             <option value="{{$category->id}}" {{ app('request')->input('type') == $category->id ? 'selected' : ''}}>{{$category->name}}</option>
                                         @endforeach
@@ -56,12 +56,12 @@
                         <form method="GET" action="{{url('property-search')}}">
                             <div class="form-row">
                                         <div class="form-group col-md-3">
-                                            <input type="text" class="form-control" name="location" placeholder="Location or postcode">
+                                            <input type="text" class="form-control" value="{{app('request')->input('location')}}" name="location" required placeholder="Location or postcode">
                                             
                                         </div>
-                                        <div class="form-group col-md-2">
+                                        <div class="form-group col-md-4">
                                             <select class="form-control" name="type">
-                                                <option value="all"> Type</option>
+                                                <option value="all"> Any Property type</option>
                                                 @foreach($propertyCategories as $category)
                                                     <option value="{{$category->id}}" {{ app('request')->input('type') == $category->id ? 'selected' : ''}}>{{$category->name}}</option>
                                                 @endforeach

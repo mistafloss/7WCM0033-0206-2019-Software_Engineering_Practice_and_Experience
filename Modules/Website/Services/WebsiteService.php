@@ -32,6 +32,7 @@ class WebsiteService
      }
      elseif($bedrooms == 'all' && $type != 'all')
      {
+	 
             $properties = $query->where('property_category_id', '=', $type)
                             ->orWhere('postcode', 'like', $location.'%')
                             ->get();

@@ -3,7 +3,9 @@
 
 <main role="main">
     <div class="container">
+     <a href="{{route('propertyDetails',$data['id'])}}"><< Back to Property details</a>
         <div class="card mt-2">
+        
             <h5 class="card-header text-center">Property information request</h5>
             <div class="card-body">
                     @if(Session::has('requestPropInfoSuccess'))
