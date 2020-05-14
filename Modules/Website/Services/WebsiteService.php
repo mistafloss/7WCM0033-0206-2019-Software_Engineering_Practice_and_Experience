@@ -32,6 +32,7 @@ class WebsiteService
      }
      elseif($bedrooms == 'all' && $type != 'all')
      {
+	 
             $properties = $query->where('property_category_id', '=', $type)
                             ->orWhere('postcode', 'like', $location.'%')
                             ->get();
@@ -51,7 +52,8 @@ class WebsiteService
 
  public static function getAllProperties()
  {
-     return Property::all();
+     return Property::where('status', '=', 'To Let')
+						->Orwhere('status', '=', 'For Sale')->paginate(5);
  }
 
  public static function getProperty($id)

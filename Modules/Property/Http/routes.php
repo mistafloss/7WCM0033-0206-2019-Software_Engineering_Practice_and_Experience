@@ -14,10 +14,7 @@ Route::group(['prefix' => 'api', 'middleware' => ['web','roles'], 'roles' => ['D
     Route::get('property-category/show/{id}',      ['uses' => 'PropertyApiController@viewPropertyCategory',   'as' => 'API_viewPropertyCategory']);
     Route::post('create/property',   ['uses' => 'PropertyApiController@createProperty', 'as' => 'API_createProperty']);
     Route::post('add-view-appt-note', ['uses' => 'PropertyApiController@addViewAppointmentNote', 'as' => 'API_addViewAppointmentNote']);
-    /*
-        For filtering, use Query parameters
-        /foo?id=someId&role=someRole
-     */
+   
 
 });
 
