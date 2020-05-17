@@ -45,8 +45,12 @@ $('#btnCreatePropertyCategory').click(function(e){
            success:function(response){
               console.log(response);
               $('#propertyCategoryId_edit').val(response.data.id);
-              $('#propertyCategoryName_edit').val(response.data.name);
               $('#propertyCategoryDescription_edit').val(response.data.description);
+              $.each(response.data, function(key, value){
+                console.log(key);
+                console.log(value);
+                $('#'+key+'_edit').val(value);
+            });
            },
     });
   });

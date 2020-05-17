@@ -21,12 +21,12 @@
                             <div class="form-group">
                                 <label for="">Listing Title*</label>
                                 <input type="text" class="form-control" id="listingTitle" name="listing_title" placeholder="">
-                                <span class="text-danger" id="listingTitle_error"> </span>
+                                <span class="text-danger" id="listing_title_error"> </span>
                             </div>
                             <div class="form-group">
                                 <label for="">House number*</label>
                                 <input type="text" class="form-control" id="houseNumber" name="house_number" placeholder="">
-                                <span class="text-danger" id="houseNumber_error"> </span>
+                                <span class="text-danger" id="house_number_error"> </span>
                             </div>
                             <div class="form-group">
                                 <label for="">Street*</label>
@@ -54,17 +54,17 @@
                             <div class="form-group">
                                 <label for="">Brief Description*</label>
                                 <textarea class="form-control tiny-textarea" id="briefDescription" name="brief_description" rows="4"></textarea>
-                                <span class="text-danger" id="briefDescription_error"> </span>
+                                <span class="text-danger" id="brief_description_error"> </span>
                             </div>
                             <div class="form-group">
                                 <label for="">Features*</label>
                                 <textarea class="form-control tiny-textarea" id="propertyFeatures" name="property_features" rows="4"></textarea>
-                                <span class="text-danger" id="propertyFeatures_error"> </span>
+                                <span class="text-danger" id="property_features_error"> </span>
                             </div>
                             <div class="form-group">
                                 <label for="">Description*</label>
                                 <textarea class="form-control tiny-textarea" id="propertyDescription" name="property_description" rows="4"></textarea>
-                                <span class="text-danger" id="propertyDescription_error"> </span>
+                                <span class="text-danger" id="property_description_error"> </span>
                             </div>
                             
                         </div>
@@ -82,12 +82,12 @@
                                         <option value="{{$category->id}}">{{$category->name}}</option>
                                     @endforeach    
                                 </select>
-                                <span class="text-danger" id="propertyType_error"> </span>
+                                <span class="text-danger" id="property_category_id_error"> </span>
                             </div>
                             <div class="form-group">
                                 <label for="">Property Price(£)*</label>
                                 <input type="text" class="form-control" id="propertyPrice" name="property_price" placeholder="">
-                                <span class="text-danger" id="propertyPrice_error"> </span>
+                                <span class="text-danger" id="property_price_error"> </span>
                             </div>
                     </div>
                     <div class="col">

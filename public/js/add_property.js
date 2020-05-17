@@ -65,64 +65,13 @@ $('form#createPropertyForm').submit(function(e){
            error: function(response){
                 $('.loading').css('display','none');
                 $("#btn_save_property").attr("disabled", false); 
-                console.log(response.responseJSON.errors);
+                //console.log(response.responseJSON.errors);
                 var errors = response.responseJSON.errors;
-
-                var listing_title_msg = response.responseJSON.errors.listing_title;
-                if(errors.hasOwnProperty('listing_title')){
-                    $('#listingTitle_error').text(listing_title_msg);
-                }else{
-                    $('#listingTitle_error').text('');  
-                }
-
-                var house_number_msg = response.responseJSON.errors.house_number;
-                if(errors.hasOwnProperty('house_number')){
-                    $('#houseNumber_error').text(house_number_msg);
-                }else{
-                    $('#houseNumber_error').text('');  
-                }
-
-                var street_msg = response.responseJSON.errors.street;
-                if(errors.hasOwnProperty('street')){
-                    $('#street_error').text(street_msg);
-                }else{
-                    $('#street_error').text('');  
-                }
-
-                var city_msg = response.responseJSON.errors.city;
-                if(errors.hasOwnProperty('city')){
-                    $('#city_error').text(city_msg);
-                }else{
-                    $('#city_error').text('');  
-                }
-
-                var postcode_msg = response.responseJSON.errors.postcode;
-                if(errors.hasOwnProperty('postcode')){
-                    $('#postcode_error').text(postcode_msg);
-                }else{
-                    $('#postcode_error').text('');  
-                }
-
-                var brief_description_msg = response.responseJSON.errors.brief_description;
-                if(errors.hasOwnProperty('brief_description')){
-                    $('#briefDescription_error').text(brief_description_msg);
-                }else{
-                    $('#briefDescription_error').text('');  
-                }
-
-                var property_features_msg = response.responseJSON.errors.property_features;
-                if(errors.hasOwnProperty('property_features')){
-                    $('#propertyFeatures_error').text(property_features_msg);
-                }else{
-                    $('#propertyFeatures_error').text('');  
-                }
-
-                var property_description_msg = response.responseJSON.errors.property_description;
-                if(errors.hasOwnProperty('property_description')){
-                    $('#propertyDescription_error').text(property_description_msg);
-                }else{
-                    $('#propertyDescription_error').text('');  
-                }
+                $.each(response.responseJSON.errors, function(key, value){
+                    console.log(key);
+                    console.log(value);
+                    $('#'+key+'_error').text(value);
+                });
 
                 var property_category_msg = response.responseJSON.errors.property_category_id;
                 if(errors.hasOwnProperty('property_category_id')){

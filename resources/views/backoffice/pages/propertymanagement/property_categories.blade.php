@@ -102,7 +102,7 @@
                     <form>
                         <div class="form-group">
                           <label for="propertyCategoryName">Name*</label>
-                          <input type="text" class="form-control" id="propertyCategoryName_edit">
+                          <input type="text" class="form-control" id="name_edit">
                           <span class="text-danger" id="editPropertyCategoryName_error"> </span>
                         </div>
                         <div class="form-group">
